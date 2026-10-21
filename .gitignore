@@ -1,0 +1,4 @@
+# Backup & temporary files
+*backup*.html
+temp_check.js
+*.tmp

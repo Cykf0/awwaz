@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ff2d75">
+<title>Download & Install Awaaz Map — Pink Shield Edition</title>
+<link rel="icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{
+  --navy: #450a32;
+  --blue: #ff2d75;
+  --pink-card: #ffffff;
+  --pink-card-border: #ffd3e2;
+  --pink-glow: rgba(255, 45, 117, 0.28);
+  --pink-gradient: linear-gradient(135deg, #ff2d75 0%, #ff6b9d 100%);
+  --bg: #fff5f8;
+  --ink: #2b1126;
+  --mut: #82637b;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,-apple-system,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(160deg,#1b0724 0%,#3a0d35 45%,#60144f 100%);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+.card-box{
+  max-width:440px;
+  width:100%;
+  background:#fff;
+  border-radius:24px;
+  padding:26px 20px;
+  box-shadow:0 12px 40px rgba(255,45,117,0.3);
+  border:1.5px solid var(--pink-card-border);
+  text-align:center;
+}
+.app-logo{
+  width:88px;
+  height:88px;
+  margin:0 auto 14px;
+  border-radius:22px;
+  background:var(--pink-gradient);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 20px var(--pink-glow);
+}
+.app-logo svg{
+  width:50px;
+  height:50px;
+  fill:#fff;
+}
+h1{
+  font-size:22px;
+  color:var(--navy);
+  margin:0 0 6px;
+}
+.sub{
+  font-size:13px;
+  color:var(--mut);
+  margin-bottom:20px;
+  line-height:1.4;
+}
+.badge{
+  background:#ffe6ef;
+  color:#d61c5c;
+  border:1px solid #ffccd9;
+  border-radius:20px;
+  padding:4px 12px;
+  font-size:11.5px;
+  font-weight:700;
+  display:inline-block;
+  margin-bottom:14px;
+}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  border:none;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  margin-bottom:10px;
+  transition:all .15s;
+}
+.btn.primary{
+  background:var(--pink-gradient);
+  color:#fff;
+  box-shadow:0 4px 16px var(--pink-glow);
+}
+.btn.primary:active{transform:scale(0.98)}
+.btn.secondary{
+  background:#f3f7fd;
+  color:#1e3a8a;
+  border:1px solid #c7d9f2;
+}
+.btn.wa{
+  background:#25d366;
+  color:#fff;
+  box-shadow:0 4px 14px rgba(37,211,102,0.3);
+}
+.instructions{
+  background:#fff9fb;
+  border:1px solid #ffd1df;
+  border-radius:14px;
+  padding:14px;
+  text-align:left;
+  font-size:12px;
+  color:#4a0e35;
+  margin:16px 0;
+  line-height:1.5;
+}
+.instructions b{display:block;margin-bottom:4px;color:var(--navy)}
+</style>
+</head>
+<body>
+
+<div class="card-box">
+  <div class="app-logo">
+    <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+  </div>
+  <span class="badge">🌸 DEVDIVA JAM 2026 | PINK SHIELD</span>
+  <h1>Install Awaaz Map</h1>
+  <div class="sub">One alert, two impacts. Audio AI Distress Detection & Live City Safety Heatmap.</div>
+
+  <button class="btn primary" id="pwaInstallBtn" onclick="installPWA()">
+    📲 Install to Phone (1-Tap PWA)
+  </button>
+
+  <a class="btn secondary" href="index.html" download="Awaaz_Map_Offline.html">
+    📥 Download Offline HTML File
+  </a>
+
+  <a class="btn wa" target="_blank" href="https://api.whatsapp.com/send?text=Hey!%20Check%20out%20Awaaz%20Map%20-%20AI%20Women%20Safety%20%26%20Live%20Heatmap%20App%3A%20https%3A%2F%2Fcykf0.github.io%2Fawwaz%2F">
+    💬 Share with Friends & Family
+  </a>
+
+  <div class="instructions">
+    <b>📲 How to add to Home Screen manually:</b>
+    • <b>Android (Chrome):</b> Tap three dots <b>⋮</b> at top right &rarr; Tap <b>"Add to Home screen"</b> or <b>"Install app"</b>.<br>
+    • <b>iPhone (Safari):</b> Tap Share button <b>⎙</b> at bottom &rarr; Scroll down &rarr; Tap <b>"Add to Home Screen"</b>.
+  </div>
+
+  <a href="index.html" style="color:var(--blue);font-weight:700;font-size:13px;text-decoration:none">
+    &larr; Back to Awaaz Map App
+  </a>
+</div>
+
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.getElementById('pwaInstallBtn');
+  if(btn) btn.style.display = 'flex';
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      deferredPrompt = null;
+    });
+  } else {
+    alert('Browser menu se "Add to Home screen" dabayein!');
+  }
+}
+</script>
+
+</body>
+</html>

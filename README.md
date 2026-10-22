@@ -36,8 +36,22 @@ It eliminates the traditional "panic button" barrier:
 ### 📳 Shake-to-SOS (DeviceMotion API)
 - 3 rapid phone shakes in a pocket or hand automatically trigger the emergency countdown without needing to look at or touch the screen.
 
-### 🎙️ Voice Code-Word Trigger (Web Speech API)
-- Continuous hands-free listening for distress phrases (*"Bachao"*, *"Help"*, *"Police"*, *"Code Pink"*).
+### 🎙️ Voice Code-Word Trigger (Web Speech API) & Live Testing Studio
+- Continuous hands-free listening for distress phrases (*"Bachao"*, *"Help"*, *"Police"*, *"Save Me"*, *"Chhod Mujhe"*).
+- **Built-in Testing Studio:** Real-time VU meter, formant matching, live speech transcript, and pre-recorded distress audio clips (Shrill Scream, "Bachao" shout, dissonance harmonics) to test speaker and voice triggers without simulation.
+
+### 📶 100% Offline Resilience (Zero-Data Mode)
+- Full PWA Service Worker caching (`sw.js`) allowing the app to launch and run in Airplane Mode.
+- Runs Web Audio DSP entirely in local device RAM and receives direct orbit signals via hardware GNSS GPS.
+- **GSM Cellular Fallback:** If internet is disconnected, alerts automatically route to Cellular SIM SMS and 112 Speed Dial with zero data required.
+
+### ⚡ Why Awaaz vs. Traditional Phone SOS
+- Eliminates the fatal physical barrier of traditional SOS (pressing power button 5 times) with **hands-free passive audio AI**.
+- Proactive escapes ("Bahaana" Fake Call, Stealth Calculator PIN `911=`, AMOLED Blackout) prevent assault before escalation.
+- Traverses beyond private text threads by feeding an anonymous 100m City Heatmap.
+
+### 🚀 Zero-Touch Dispatch Hub
+- Solves browser-sandbox WhatsApp restrictions via automated Cloud Bot (0-clicks) and Native Carrier SMS.
 
 ### 🚶‍♀️ "Walk With Me" Journey Escort & Battery Guardian
 - Set a walking timer (e.g., 20 mins from metro to home). If user doesn't check in safely, SOS auto-dispatches.

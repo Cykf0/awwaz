@@ -1,6 +1,6 @@
-# 🌸 Awaaz Map — Pink Shield & DevDiva Edition
+# 🌸 Awaaz Map — Pink Shield Edition
 > **"One alert, two impacts. One person's help and a city's safety."**  
-> *Built with ❤️ for DevDiva Jam 2026 by Team Pixie Bytes*
+> *Built with ❤️ for Women Safety & City Protection*
 
 ---
 
@@ -85,5 +85,5 @@ Tap the **"📲 Install App"** button at the top to add Awaaz Map to your Androi
 ---
 
 ## 📄 License & Attribution
-Designed & developed for **DevDiva Jam 2026** by **Team Pixie Bytes**.  
+Designed & developed for Women Safety & Autonomous Protection.  
 Citations include NCRB Crime in India (2023), INTACH-Jagori Women Safety Audits, and NFHS-5 research.

@@ -1,7 +1,7 @@
 {
   "name": "awwaz-map",
   "version": "1.0.0",
-  "description": "Awaaz Map - Women Safety & Live City Safety Heatmap (DevDiva Jam 2026)",
+  "description": "Awaaz Map - Women Safety & Live City Safety Heatmap",
   "main": "index.html",
   "scripts": {
     "start": "npx serve ."
@@ -11,7 +11,7 @@
     "audio-ai",
     "heatmap",
     "pwa",
-    "devdiva",
+    "offline-safety",
     "pink-shield"
   ],
   "author": "Team Pixie Bytes",

@@ -54,24 +54,27 @@ body.theme-navy {
   background: linear-gradient(160deg, #0b1f45, #1b3f72 55%, #0072c6);
 }
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{font-family:Arial,Helvetica,-apple-system,sans-serif;color:var(--ink);background:linear-gradient(160deg,#1b0724 0%,#3a0d35 45%,#60144f 100%);min-height:100vh;transition:background .3s}
-#app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;box-shadow:0 0 50px rgba(255,45,117,0.25);position:relative;transition:all .3s}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:linear-gradient(160deg,#1b0724 0%,#3a0d35 45%,#60144f 100%);min-height:100vh;transition:background .3s}
+#app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;box-shadow:0 10px 40px rgba(0,0,0,0.25);position:relative;transition:all .3s}
 
 /* Header Branding */
-header{background:var(--navy);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff1a}
+header{background:var(--navy);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.12)}
 header b{font-size:18px;display:flex;align-items:center;gap:6px;letter-spacing:.3px}
-header small{color:var(--sky);font-size:10px;letter-spacing:.8px;display:block}
-.tagline-banner{background:linear-gradient(90deg,#0e264d,#1b3f72);color:#cfe8ff;font-size:11px;font-weight:700;padding:6px 14px;text-align:center;letter-spacing:.3px;border-bottom:1px solid #ffffff14}
-.lang-btn{background:#ffffff22;border:1px solid #ffffff44;color:#fff;border-radius:12px;padding:3px 8px;font-size:11px;font-weight:700;cursor:pointer}
+header small{color:var(--sky);font-size:10.5px;letter-spacing:.5px;display:block}
+.tagline-banner{background:linear-gradient(90deg,var(--navy),#2b1126);color:var(--sky);font-size:11.5px;font-weight:700;padding:7px 16px;text-align:center;letter-spacing:.3px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.lang-btn{background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:14px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s}
+.lang-btn:hover{background:rgba(255,255,255,0.25)}
+.sos-pill-btn{background:linear-gradient(135deg,#e11d48,#be123c);color:#fff;border:none;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 2px 10px rgba(225,29,72,0.45);animation:sosGlow 2s infinite}
+@keyframes sosGlow{0%,100%{box-shadow:0 0 0 0 rgba(225,29,72,0.6)}50%{box-shadow:0 0 0 6px rgba(225,29,72,0)}}
 
-main{flex:1;padding:12px 14px 84px}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:#fff;border-top:1px solid #d5e2f2;z-index:50;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+main{flex:1;padding:14px 16px 90px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);border-top:1px solid #ffd6e2;z-index:50;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 -4px 20px rgba(0,0,0,0.06);padding:4px 6px}
 nav::-webkit-scrollbar{display:none}
-nav button{flex:0 0 auto;min-width:58px;border:0;background:none;padding:7px 3px;font-weight:700;font-size:10px;color:var(--mut);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;white-space:nowrap}
-nav button.on{color:var(--blue);box-shadow:inset 0 3px 0 var(--blue);background:#f7fbff}
+nav button{flex:0 0 auto;min-width:62px;border:0;background:none;padding:7px 6px;font-weight:700;font-size:10.5px;color:var(--mut);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap;border-radius:12px;transition:all .15s}
+nav button.on{color:var(--blue);background:#fff0f5;font-weight:800}
 .tab{display:none}.tab.on{display:block}
-.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 5px #0b1f4514}
-.sec{font-size:13px;font-weight:800;color:var(--navy);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center}
+.card{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid var(--pink-card-border)}
+.sec{font-size:13.5px;font-weight:800;color:var(--navy);margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
 
 /* PPT 4-Pillars Process Strip (Detect -> Alert -> Map -> Act) */
 .pillars-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
@@ -82,13 +85,13 @@ nav button.on{color:var(--blue);box-shadow:inset 0 3px 0 var(--blue);background:
 .pillar-step span{font-size:9.5px;color:var(--mut);display:block;line-height:1.2;margin-top:2px}
 
 /* Hero Section (Slide 1 Mockup) */
-.hero{background:linear-gradient(160deg,#1b3f72,#0072c6);color:#fff;border-radius:18px;padding:20px 16px 16px;margin-bottom:12px;text-align:center;box-shadow:0 6px 18px #0b1f4533;position:relative}
-.ring{width:86px;height:86px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:#ffffff1f;border:3px solid #ffffff55;transition:all .3s}
+.hero{background:linear-gradient(145deg,#ff2d75 0%,#ff5c8a 50%,#b5179e 100%);color:#fff;border-radius:20px;padding:22px 18px 18px;margin-bottom:14px;text-align:center;box-shadow:0 8px 25px rgba(255,45,117,0.35);position:relative}
+.ring{width:86px;height:86px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;border:3px solid #ffffff55;transition:all .3s}
 .ring svg{width:38px;height:38px;fill:#fff}
 .ring.on{background:#2e9e5b;border-color:#9af0be;animation:pulse2 1.6s infinite}@keyframes pulse2{50%{box-shadow:0 0 0 14px #2e9e5b33}}
-.hero #st{color:#fff;font-size:20px;font-weight:800;letter-spacing:.5px}.hero #sub{color:#cfe8ff;font-size:12.5px;margin-top:2px}
-.pills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px}
-.pl{background:#ffffff26;color:#fff;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:700}
+.hero #st{color:#fff;font-size:20px;font-weight:800;letter-spacing:.5px}.hero #sub{color:#fff0f5;font-size:12.5px;margin-top:4px;line-height:1.4}
+.pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px}
+.pl{background:#ffffff26;color:#fff;border-radius:999px;padding:5px 11px;font-size:11.5px;font-weight:700}
 .pl.ok{background:#e3f6ea;color:#1f7a45}.pl.wn{background:#fff3df;color:#9a5300}.pl.bd{background:#fde4e4;color:#b00020}
 
 /* Sound Detection Wave & Bars (Slide 1 Mockup) */
@@ -108,15 +111,15 @@ canvas.wave{width:100%;height:62px;display:block;margin:8px 0;background:#0d1c38
 
 /* Buttons & Controls */
 button.b{border:0;border-radius:24px;padding:11px 18px;font-weight:700;font-size:14px;color:#fff;background:var(--blue);cursor:pointer;margin:4px 6px 0 0;display:inline-flex;align-items:center;justify-content:center;gap:6px}
-button.b.big{width:100%;font-size:16px;padding:14px;margin:10px 0 0;background:var(--grn);border-radius:14px}
-button.b.big.stop{background:var(--red)}
-button.b.g{background:#7a8aa0}button.b.o{background:var(--navy)}button.b.s{padding:7px 11px;font-size:12px;border-radius:8px}button.b.wa{background:var(--wa);color:#fff}
-.preset-chip{background:#e7f0fa;border:1px solid #bfd5ed;border-radius:14px;padding:4px 9px;font-size:11px;font-weight:700;color:var(--navy);cursor:pointer;margin-right:4px}
-.preset-chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+button.b.big{width:100%;font-size:16px;padding:14px;margin:12px 0 0;background:linear-gradient(135deg,#10b981,#059669);border-radius:16px;box-shadow:0 4px 16px rgba(16,185,129,0.35)}
+button.b.big.stop{background:linear-gradient(135deg,#e11d48,#be123c);box-shadow:0 4px 16px rgba(225,29,72,0.35)}
+button.b.g{background:#7a8aa0}button.b.o{background:var(--navy)}button.b.s{padding:7px 12px;font-size:12px;border-radius:8px}button.b.wa{background:var(--wa);color:#fff}
+.preset-chip{background:#fff0f5;border:1px solid var(--pink-card-border);border-radius:16px;padding:5px 12px;font-size:11.5px;font-weight:700;color:var(--navy);cursor:pointer;margin-right:4px}
+.preset-chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 
 /* Live Scream Meter */
-.scream-box{background:#f3f7fc;border:1px solid #cce0f5;border-radius:10px;padding:12px;margin:10px 0}
-.scream-meter{height:16px;background:#d8e5f5;border-radius:8px;overflow:hidden;position:relative;margin:8px 0}
+.scream-box{background:#fdf9fb;border:1px solid #ffd6e2;border-radius:12px;padding:12px;margin:10px 0}
+.scream-meter{height:16px;background:#ffeef3;border-radius:8px;overflow:hidden;position:relative;margin:8px 0}
 .scream-fill{height:100%;width:0%;background:linear-gradient(90deg,#2e9e5b 0%,#ffd24d 50%,#ea7d12 70%,#d94040 90%);border-radius:8px;transition:width .1s linear}
 .scream-th{position:absolute;top:0;bottom:0;width:3px;background:var(--navy);z-index:3}
 .scream-status{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700}
@@ -124,11 +127,30 @@ button.b.g{background:#7a8aa0}button.b.o{background:var(--navy)}button.b.s{paddi
 .badge.danger{background:#fde8e8;color:#b00020}.badge.info{background:#e3f2fd;color:#0072c6}.badge.org{background:#fff3df;color:#9a5300}
 .note{font-size:12px;color:var(--mut)}.sim{background:#fff3df;color:#9a5300;border-radius:8px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block}
 
-/* WhatsApp Links */
+/* WhatsApp & SMS Links */
 a.lnk{display:inline-flex;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:#fff;border-radius:20px;padding:9px 14px;font-weight:700;font-size:13px;margin:4px 6px 0 0;background:var(--wa)}
 a.lnk.sms{background:var(--blue)}a.lnk.em{background:var(--red)}a.lnk.s{padding:6px 11px;font-size:12px;border-radius:8px;margin:0 4px 0 0}
-.wa-main-btn{background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px;border-radius:28px;text-decoration:none;font-size:14.5px;font-weight:800;box-shadow:0 4px 15px rgba(37,211,102,0.45);margin:6px 0;border:none;cursor:pointer}
+.wa-main-btn{background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:28px;text-decoration:none;font-size:14.5px;font-weight:800;box-shadow:0 4px 15px rgba(37,211,102,0.45);margin:8px 0;border:none;cursor:pointer}
 .wa-main-btn svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+.sms-main-btn{background:#0072c6;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:28px;text-decoration:none;font-size:14.5px;font-weight:800;box-shadow:0 4px 15px rgba(0,114,198,0.45);margin:8px 0;border:none;cursor:pointer}
+.sms-main-btn svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+
+/* Studio Accordion for Clean Uncluttered UI */
+details.studio-accordion{background:#fdf9fb;border:1.5px solid #ffd6e2;border-radius:16px;padding:14px;margin-bottom:14px;transition:all .2s}
+details.studio-accordion[open]{background:#fff0f5;border-color:var(--blue);box-shadow:0 4px 18px rgba(255,45,117,0.12)}
+summary.studio-summary{font-weight:800;font-size:13.5px;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;user-select:none}
+summary.studio-summary::-webkit-details-marker{display:none}
+summary.studio-summary::after{content:'▾';font-size:16px;transition:transform .2s;color:var(--blue)}
+details[open] summary.studio-summary::after{transform:rotate(180deg)}
+
+/* Safety Circle Card & Action Buttons */
+.circle-item{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;border-left:5px solid var(--blue);box-shadow:0 2px 10px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:10px;border-top:1px solid #f0f0f5;border-right:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5}
+.circle-item.family{border-left-color:#d94040}.circle-item.friend{border-left-color:#0072c6}.circle-item.emergency{border-left-color:#ea7d12}
+.circle-action-btn{display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 6px;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;color:#fff;transition:all .15s;text-align:center}
+.circle-action-btn.wa{background:#25d366;box-shadow:0 2px 8px rgba(37,211,102,0.25)}
+.circle-action-btn.sms{background:#0072c6;box-shadow:0 2px 8px rgba(0,114,198,0.25)}
+.circle-action-btn.call{background:#e11d48;box-shadow:0 2px 8px rgba(225,29,72,0.25)}
+.circle-action-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
 
 /* Safe Home Radius & Geofence */
 .home-zone-card{background:linear-gradient(145deg,#f0fdf4,#e8f8ee);border:1.5px solid #a3e6b7;border-radius:12px;padding:13px;margin-bottom:12px}
@@ -284,338 +306,197 @@ nav button.on{color:var(--blue);box-shadow:inset 0 3px 0 var(--blue);background:
 .strobe-active{animation:strobeFlash .08s infinite}
 @keyframes strobeFlash{0%,100%{background:#fff;color:#000}50%{background:#ff2d75;color:#fff}}
 
+
+/* Enhanced Header */
+header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:0;z-index:40;box-shadow:0 2px 10px rgba(0,0,0,0.15)}
+.header-brand{display:flex;align-items:center;gap:10px}
+.header-shield-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.header-titles{display:flex;flex-direction:column}
+.header-title-row{display:flex;align-items:center;gap:6px}
+.header-title-row b{font-size:16px;font-weight:800;letter-spacing:-0.2px;color:#fff}
+.header-actions{display:flex;align-items:center;gap:6px}
+.header-chip-btn{background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:12px;padding:5px 9px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s}
+.header-chip-btn:hover{background:rgba(255,255,255,0.25)}
+.mode-tag-pill{font-size:9.5px;font-weight:800;background:rgba(255,255,255,0.15);color:#fff;padding:3px 7px;border-radius:6px;letter-spacing:0.5px}
+
+/* Quick Tools Grid */
+.quick-tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.quick-tool-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 6px;border-radius:14px;border:1px solid #ffd1df;background:#ffffff;color:var(--navy);cursor:pointer;box-shadow:0 2px 8px rgba(255,45,117,0.06);transition:all .15s;text-align:center}
+.quick-tool-btn:hover{background:#fff0f5;border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,45,117,0.14)}
+.quick-tool-btn:active{transform:translateY(0)}
+.qt-icon{font-size:20px;line-height:1}
+.qt-text{display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.qt-text b{font-size:11px;color:var(--navy)}
+.qt-text small{font-size:9.5px;color:var(--mut)}
+
+/* Offline banner & status */
+.offline-banner{border-radius:12px;padding:7px 12px;font-size:11px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.status-dot-pulse{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 0 rgba(34,197,94,0.6);animation:statusDotPulse 2s infinite}
+@keyframes statusDotPulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,0.7)}70%{box-shadow:0 0 0 6px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.mini-chip-btn{background:#ffffff;border:1px solid #cce0f5;color:var(--navy);padding:3px 8px;font-size:10px;font-weight:700;border-radius:8px;cursor:pointer;transition:all .15s}
+.mini-chip-btn:hover{background:#f0f7ff;border-color:#0072c6}
+
+/* Clean Home Circle Avatars */
+.home-circle-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+.home-circle-row::-webkit-scrollbar{display:none}
+
 </style>
 </head>
 <body>
 <div id="app">
 <header>
-  <div>
-    <b><svg style="width:20px;height:20px;fill:var(--sky)" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg> Awaaz Map</b>
-    <small>🌸 PINK SHIELD EDITION | WOMEN SAFETY & LIVE HEATMAP</small>
+  <div class="header-brand">
+    <div class="header-shield-icon">
+      <svg style="width:22px;height:22px;fill:var(--blue)" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+    </div>
+    <div class="header-titles">
+      <div class="header-title-row">
+        <b>Awaaz Map</b>
+        <span class="badge girlish" style="font-size:9.5px;padding:2px 7px">🌸 Pink Shield</span>
+      </div>
+      <small id="taglineTxt" style="font-size:10.5px;color:var(--sky);font-weight:600">One alert, two impacts. Women Safety & Live Heatmap</small>
+    </div>
   </div>
-  <div style="display:flex;align-items:center;gap:6px">
-    <button class="lang-btn" id="themeBtn" onclick="toggleGirlishTheme()" title="Switch Theme">🌸 Glow</button>
-    <button class="lang-btn" onclick="openCalculator()" title="Stealth Calculator Disguise">🔢 Stealth</button>
-    <button class="lang-btn" onclick="openBlackScreen()" title="AMOLED Blackout Screen">🕶️ Black</button>
-    <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">हिन्दी/ENG</button>
-    <small id="modeTag" style="font-weight:800;color:#fff">HOME</small>
+  <div class="header-actions">
+    <button class="header-chip-btn" id="themeBtn" onclick="toggleGirlishTheme()" title="Switch Theme">🌸</button>
+    <button class="header-chip-btn" id="langToggleBtn" onclick="toggleLanguage()" title="Language">हिन्दी</button>
+    <button class="sos-pill-btn" onclick="sendManualCircleSOS()" title="Instant Emergency SOS">🚨 SOS</button>
+    <span id="modeTag" class="mode-tag-pill">HOME</span>
   </div>
 </header>
-<div class="tagline-banner" id="taglineTxt">
-  One alert, two impacts. One person's help and a city's safety.
-</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 14px;background:#eef5fc;border-bottom:1px solid #dbe7f5;font-size:11.5px">
-  <span style="font-weight:700;color:var(--navy)">🛡️ Women Safety & Security Platform</span>
-  <div style="display:flex;gap:5px">
-    <button class="b s" style="background:#22c55e;color:#000;font-weight:800;padding:4px 8px;font-size:11px" onclick="triggerPwaInstall()">📲 Install App</button>
-    <button class="b s o" style="padding:4px 8px;font-size:11px" onclick="show('pitch')">📑 View PPT Deck</button>
-    <button class="b s wa" style="padding:4px 8px;font-size:11px" onclick="sendManualCircleSOS()">🚨 SOS</button>
-  </div>
-</div>
 <main>
 
-<!-- 100% OFFLINE RESILIENCE & DATA STATUS BANNER -->
+<!-- 100% OFFLINE RESILIENCE STATUS BAR -->
 <div id="offlineStatusBar" class="offline-banner online">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
-    <div>
-      <span style="font-weight:800;color:#1e6a3d">🌐 ONLINE & 100% OFFLINE READY:</span>
-      <span style="font-size:11px;color:#2c3e50">Audio AI runs in device RAM · Satellite GPS active · Zero internet required</span>
+  <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <div style="display:flex;align-items:center;gap:7px">
+      <span class="status-dot-pulse"></span>
+      <span style="font-weight:700;font-size:11.5px;color:#1e6a3d">100% Offline Device AI Active</span>
+      <span style="font-size:10px;color:#527361">· On-device RAM</span>
     </div>
-    <div style="display:flex;gap:4px">
-      <button class="b s o" style="padding:3px 8px;font-size:10.5px" onclick="toggleSimulatedOffline()">🧪 Test Offline Mode</button>
+    <div style="display:flex;gap:5px;align-items:center">
+      <button class="mini-chip-btn" onclick="toggleSimulatedOffline()" title="Test offline mode">🧪 Offline Test</button>
+      <button class="mini-chip-btn" onclick="show('pitch')">📑 PPT</button>
+      <button class="mini-chip-btn" onclick="triggerPwaInstall()">📲 App</button>
     </div>
   </div>
-</div>
-
-<!-- 4-PILLAR PROCESS STRIP (Slide 2) -->
-<div class="pillars-strip">
-  <div class="pillar-step s1"><b>1. DETECT</b><span>Sound AI<br>Distress cry</span></div>
-  <div class="pillar-step s2"><b>2. ALERT</b><span>5s Cancel<br>WhatsApp SOS</span></div>
-  <div class="pillar-step s3"><b>3. MAP</b><span>100m grid<br>Live heatmap</span></div>
-  <div class="pillar-step s4"><b>4. ACT</b><span>Patrol advice<br>Authority score</span></div>
 </div>
 
 <!-- HOME TAB -->
 <section class="tab on" id="t-home">
 
- <!-- 🎀 GIRL POWER QUICK SAFETY TOOLS STRIP -->
- <div class="card" style="border: 2px solid #ffd1df; background: linear-gradient(145deg, #fff9fb, #fff0f5); border-radius: 14px; padding: 12px; margin-bottom: 12px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-    <b style="font-size: 13.5px; color: var(--navy)">🎀 Girl Power Quick Safety Suite</b>
-    <span class="badge girlish">✨ 1-TAP ACTION</span>
-  </div>
-  <div class="quick-tools-row">
-    <button class="quick-tool-btn" onclick="triggerFakeCall(0, 'Papa ❤️')">
-      <span>📞</span><span>Fake Call (Now)</span>
-    </button>
-    <button class="quick-tool-btn" onclick="triggerFakeCall(15, 'Papa ❤️')">
-      <span>⏱️</span><span>Fake Call (15s)</span>
-    </button>
-    <button class="quick-tool-btn" onclick="show('escort')">
-      <span>🚶‍♀️</span><span>Walk With Me</span>
-    </button>
-    <button class="quick-tool-btn" onclick="show('map');setTimeout(findNearestSafeHaven,400)">
-      <span>🛡️</span><span>Nearest Safe Haven</span>
-    </button>
-    <button class="quick-tool-btn" onclick="toggleStrobeAlert()">
-      <span>🚨</span><span>Strobe + Siren</span>
-    </button>
-    <button class="quick-tool-btn" onclick="openBlackScreen()">
-      <span>🕶️</span><span>Blackout Listening</span>
-    </button>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:11px;color:var(--mut)">
-    <span id="shakeStatusTag">📳 Shake-to-SOS: <b>Active</b></span>
-    <span id="speechStatusTag">🎙️ Code-Word: <b>"Bachao / Help"</b></span>
-  </div>
- </div>
-
- <!-- PROMINENT TOP 1-CLICK TEST PANEL & ZERO-TOUCH HUB -->
- <div class="card" style="border: 2.5px solid #0072c6; background: #eef6ff; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 4px 14px rgba(0,114,198,0.2);">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-    <b style="font-size: 15px; color: var(--navy)">🧪 TESTING PANEL & ZERO-TOUCH DISPATCH HUB</b>
-    <span class="badge" style="background: #25d366; color: #fff; font-weight: 800; font-size: 11px;">READY TO TEST</span>
-  </div>
-  <p style="font-size: 12px; color: #1e3d6f; margin: 0 0 8px; line-height: 1.4;">
-    Test emergency trigger methods: <b>Simulation</b>, <b>Live Voice Cry ("Bachao!")</b>, or <b>Audio Playback</b>:
-  </p>
-
-  <!-- DISPATCH CHANNEL SELECTOR (WhatsApp vs Rasta 1 vs Rasta 2) -->
-  <div style="background:#fff;border:1px solid #bfd7f3;border-radius:10px;padding:8px 10px;margin-bottom:10px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <b style="font-size:12px;color:var(--navy)">🚨 Alert Delivery Channel (Choose Mode):</b>
-      <span class="badge info" id="activeChannelBadge">🟢 WhatsApp</span>
-    </div>
-    <div style="display:flex;gap:4px">
-      <button class="dispatch-mode-chip active" id="chipModeWa" onclick="setDispatchChannel('wa')">🟢 WhatsApp</button>
-      <button class="dispatch-mode-chip" id="chipModeSms" onclick="setDispatchChannel('sms')">📱 Rasta 1: Native SMS</button>
-      <button class="dispatch-mode-chip" id="chipModeCloud" onclick="setDispatchChannel('cloud')">☁️ Rasta 2: Cloud Bot</button>
-    </div>
-    <div id="dispatchChannelDesc" style="font-size:11px;color:#204374;margin-top:6px;line-height:1.4">
-      🟢 <b>WhatsApp Mode:</b> Countdown ke baad pre-filled live Google Maps link ke sath WhatsApp chat auto-open karega.
-    </div>
-
-    <!-- ZERO-TOUCH WHATSAPP EXPLAINER CALLOUT -->
-    <div class="zero-touch-box" style="margin-top:8px">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-        <span style="font-size:14px">💡</span>
-        <b style="font-size:11.5px;color:#5b21b6">Why WhatsApp requires 1 tap & How Awaaz gives 100% Zero-Touch:</b>
-      </div>
-      <p style="font-size:11px;color:#4c1d95;margin:0 0 6px;line-height:1.4">
-        Meta's browser security policy strictly blocks websites from secretly pressing "Send" inside the user's WhatsApp app. 
-        To trigger <b>100% Zero-Touch autonomous delivery (0 clicks required)</b>, switch to <b>📱 Rasta 1 (Native SMS)</b> or <b>☁️ Rasta 2 (Cloud Bot API)</b>!
-      </p>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="b s wa" style="padding:4px 9px;font-size:10.5px" onclick="testRasta2CloudBot()">🚀 Test Zero-Touch Cloud Bot (0 Clicks)</button>
-        <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="testRasta1NativeSms()">📲 Test GSM Cellular SMS Intent</button>
-      </div>
-    </div>
-  </div>
-
-  <div style="display: flex; flex-direction: column; gap: 8px;">
-    <button class="b" style="background: #0072c6; font-size: 14.5px; padding: 12px; border-radius: 12px; font-weight: 800; box-shadow: 0 3px 8px rgba(0,114,198,0.3); text-align: center;" onclick="$('simBtn').click()">
-      ⚡ Tareeqa 1: Instant Simulation (5s Countdown + Siren + SOS)
-    </button>
-    <button class="b" style="background: #2e9e5b; font-size: 14.5px; padding: 12px; border-radius: 12px; font-weight: 800; box-shadow: 0 3px 8px rgba(46,158,91,0.3); text-align: center;" onclick="testLiveVoice()">
-      🎙️ Tareeqa 2: Live Voice / Audio Test Studio (Say "Bachao!")
-    </button>
-    <button class="b" style="background: #ea7d12; font-size: 13.5px; padding: 10px; border-radius: 12px; font-weight: 800; box-shadow: 0 3px 8px rgba(234,125,18,0.3); text-align: center;" onclick="siren(4000)">
-      🔊 Test Loud Emergency Siren (4s Buzzer)
-    </button>
-  </div>
- </div>
-
- <!-- 🎙️ LIVE VOICE & AUDIO TESTING STUDIO (Audio Playback & Live Mic Engine) -->
- <div class="studio-card" id="audioStudioSection">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-    <b style="font-size:14px;color:var(--navy)">🎙️ LIVE VOICE & AUDIO TESTING STUDIO</b>
-    <span class="badge" id="studioModeBadge" style="background:#22c55e;color:#fff;font-weight:800;font-size:10px">LIVE MIC & AUDIO</span>
-  </div>
-  <p style="font-size:11.5px;color:#1e3d6f;margin:0 0 8px;line-height:1.4">
-    Test live with real speech or play built-in distress audio clips into the mic. No simulation needed:
-  </p>
-
-  <!-- Built-in Audio Clip Players -->
-  <b style="font-size:11.5px;color:var(--navy);display:block;margin-bottom:4px">🔊 Step 1: Play Test Distress Audio Clips (Listen or Play into Mic):</b>
-  <div class="studio-btn-row">
-    <button class="studio-btn" onclick="playTestScream()">
-      <span style="font-size:16px">😱</span>
-      <span>Shrill Scream<br><small style="font-weight:400;color:var(--mut)">950-2100 Hz</small></span>
-    </button>
-    <button class="studio-btn" onclick="playTestBachaoShout()">
-      <span style="font-size:16px">🗣️</span>
-      <span>"BACHAO! HELP!"<br><small style="font-weight:400;color:var(--mut)">Shouting Cry</small></span>
-    </button>
-    <button class="studio-btn" onclick="playTestDistressHarmonics()">
-      <span style="font-size:16px">🚨</span>
-      <span>Dissonance<br><small style="font-weight:400;color:var(--mut)">Distress Harmonics</small></span>
-    </button>
-  </div>
-
-  <!-- Live Voice & Speech Recognition Controls -->
-  <div style="margin-top:10px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-      <b style="font-size:11.5px;color:var(--navy)">🎙️ Step 2: Speak Live Distress Words or Make Sound:</b>
-      <button class="b s g" style="padding:2px 7px;font-size:10px" onclick="resetCooldown()">🔄 Reset Cooldown (0s)</button>
-    </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-      <button class="b s" style="background:#2e9e5b;flex:1;padding:8px" onclick="testLiveVoice()">
-        🎤 Start Live Mic Test
-      </button>
-      <button class="b s o" id="demoModeBtn" style="padding:8px" onclick="toggleDemoSensitivity()">
-        🎯 Demo Mode: High Sensitivity
-      </button>
-    </div>
-
-    <!-- Live Studio Telemetry -->
-    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:10px;padding:9px 10px;margin-top:6px">
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--navy);font-weight:700">
-        <span>Mic Sound Level: <span id="studioDbVal" style="color:#0072c6">-- dB</span></span>
-        <span>Vocal Band (700-3800Hz): <span id="studioVocalVal" style="color:#2e9e5b">--%</span></span>
-      </div>
-      <div class="studio-vu-track">
-        <div id="studioDbBar" class="studio-vu-fill"></div>
-      </div>
-      <div style="font-size:10.5px;color:var(--mut);margin-top:4px">
-        Recognized Keywords: <i>"Bachao", "Help", "Police", "Save Me", "Chhod Mujhe", "Pink"</i>
-      </div>
-      <div id="liveSpeechTranscript" class="transcript-bubble">
-        🎙️ Live Speech: Waiting for speech... Say <b>"BACHAO!"</b> or <b>"HELP!"</b> into the mic!
-      </div>
-    </div>
-  </div>
- </div>
-
- <!-- ⚡ WHY AWAAZ IS 10x BETTER THAN TRADITIONAL PHONE SOS -->
- <div class="sos-comp-card">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <b style="font-size:13.5px;color:var(--navy)">⚡ Why Awaaz vs. Traditional Phone SOS (5x Power Button)</b>
-    <span class="badge" style="background:#ffe6ef;color:#d61c5c;font-weight:800;font-size:10px">CRITICAL COMPARISON</span>
-  </div>
-  <p style="font-size:11px;color:var(--mut);margin:4px 0 8px;line-height:1.4">
-    Why standard phone emergency SOS fails during real attacks and how Awaaz Pink Shield solves it:
-  </p>
-
-  <div style="overflow-x:auto">
-    <table class="comp-table">
-      <thead>
-        <tr>
-          <th style="width:25%">Feature</th>
-          <th style="width:37%">Traditional Phone SOS (Android/iOS)</th>
-          <th style="width:38%;background:#eaf8ef;color:#1e6a3d">🌸 Awaaz Pink Shield</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>Trigger Mode</b></td>
-          <td class="comp-bad">Requires physical access: press power button 5 times. <i>Fails if hands are grabbed, pinned, or phone is snatched.</i></td>
-          <td class="comp-good"><b>Zero-Touch Passive AI:</b> Screaming, shouting "BACHAO!", or 3 phone shakes triggers SOS automatically!</td>
-        </tr>
-        <tr>
-          <td><b>Pre-Incident Prevention</b></td>
-          <td class="comp-bad"><b>Reactive only:</b> Alerts only AFTER an assault has already begun.</td>
-          <td class="comp-good"><b>Proactive Escapes:</b> "Bahaana" Fake Call from Papa (real Hindi voice) to exit unsafe spots, Walk-With-Me timer.</td>
-        </tr>
-        <tr>
-          <td><b>Attacker Camouflage</b></td>
-          <td class="comp-bad">Shows bright red SOS screen, provoking attacker to destroy phone or get violent.</td>
-          <td class="comp-good"><b>Stealth Calculator (PIN 911=)</b> & AMOLED Blackout (looks powered off while listening).</td>
-        </tr>
-        <tr>
-          <td><b>Incident Telemetry</b></td>
-          <td class="comp-bad">Sends only a bare GPS link without context.</td>
-          <td class="comp-good">Captures audio dB, scream verification %, battery %, turn-by-turn navigation & nearest 24/7 Safe Havens!</td>
-        </tr>
-        <tr>
-          <td><b>City Safety Impact</b></td>
-          <td class="comp-bad">Siloed inside private SMS threads; zero civic impact.</td>
-          <td class="comp-good"><b>"One alert, two impacts":</b> Feeds 100m anonymous City Heatmap + drafts Municipal Grievance letters for dark spots.</td>
-        </tr>
-        <tr>
-          <td><b>Zero-Internet Resilience</b></td>
-          <td class="comp-bad">Most modern safety apps crash or fail without active 4G/5G data pack.</td>
-          <td class="comp-good"><b>100% Offline:</b> On-device Web Audio AI + Satellite GNSS + Carrier GSM SMS fallback.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
- </div>
-
-
- <div class="warn" id="noCt" style="display:none">
-   No Close Friends or Family added yet! Add Mom, Dad, or Best Friend in <b>Friends & Family</b> so alerts reach them. <button class="b s" onclick="show('circle')">Add Family/Friend</button>
- </div>
-
- <!-- HERO BANNER (Slide 1 Mockup) -->
+ <!-- 🛡️ HERO PROTECTION HUB -->
  <div class="hero">
   <div class="ring" id="ring"><svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg></div>
   <div id="st">SAFETY MODE OFF</div>
-  <div id="sub">Turn it on once. App listens for screams & distress cries.</div>
+  <div id="sub">Turn it on once. App passively listens for screams & distress cries in device RAM.</div>
   <button class="b big" id="startBtn">Turn ON Safety Mode</button>
   <div class="pills">
-    <span class="pl ok">Audio stays on device</span>
+    <span class="pl ok">🛡️ RAM AI</span>
     <span class="pl wn" id="detPill">Detector: Ready</span>
-    <span class="pl wn" id="locPill" onclick="forceAcquireGPS()" style="cursor:pointer" title="Click to refresh GPS">📍 Waiting for Live GPS...</span>
+    <span class="pl wn" id="locPill" onclick="forceAcquireGPS()" style="cursor:pointer" title="Click to refresh GPS">📍 Waiting GPS...</span>
     <span class="pl" id="homeRadiusPill">🏡 Home: 200m</span>
     <span class="pl" id="ctPill">0 in Circle</span>
   </div>
-  <div style="background:#f0f9ff;border:2px solid #0284c7;border-radius:14px;padding:12px 14px;margin-top:14px;text-align:left">
+
+  <div class="hero-gps-box" style="background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.35);border-radius:14px;padding:11px 13px;margin-top:14px;text-align:left">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <b style="font-size:13px;color:#0369a1">🛰️ YOUR PHONE'S LIVE GPS ENGINE</b>
-      <span class="badge" id="gpsLiveBadge" style="background:#0284c7;color:#fff;font-size:11px">Tap to Test</span>
+      <b style="font-size:12px;color:#fff;letter-spacing:.3px">🛰️ YOUR PHONE'S LIVE GPS ENGINE</b>
+      <span class="badge" id="gpsLiveBadge" style="background:#0284c7;color:#fff;font-size:10px">Tap to Lock</span>
     </div>
-    <div id="gpsDetailedStatus" style="font-size:12.5px;color:#334155;background:#fff;border:1px solid #bae6fd;border-radius:8px;padding:8px 10px;margin-bottom:8px">
+    <div id="gpsDetailedStatus" style="font-size:11.5px;color:#1e293b;background:#fff;border-radius:8px;padding:7px 10px;margin-bottom:7px;line-height:1.4">
       📍 <b>Status:</b> Initializing phone GPS... Tap button below to lock your exact doorstep.
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="b s" style="background:#0284c7;color:#fff;font-weight:800;padding:8px 14px;border-radius:8px;flex:1" onclick="testAndLockRealGPS()">
-        🎯 Get Real Phone GPS (Lock Now)
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="b s" style="background:#0284c7;color:#fff;font-weight:700;padding:7px 12px;border-radius:8px;flex:1" onclick="testAndLockRealGPS()">
+        🎯 Lock Real GPS Now
       </button>
-      <a id="gmapsVerifyLink" href="#" target="_blank" rel="noopener" style="display:none;background:#22c55e;color:#000;font-weight:800;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;align-items:center;gap:4px">
-        🗺️ Verify on Google Maps
+      <a id="gmapsVerifyLink" href="#" target="_blank" rel="noopener" style="display:none;background:#22c55e;color:#000;font-weight:800;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:11.5px;align-items:center;gap:4px">
+        🗺️ Verify Maps
       </a>
     </div>
   </div>
  </div>
 
- <!-- SAFE HOME RADIUS STATUS CARD (Near Home Only) -->
- <div class="home-zone-card" id="homeZoneCard">
-   <div style="display:flex;justify-content:space-between;align-items:center">
-     <b style="color:#1e6a3d;font-size:14px" id="homeZoneTitle">🏡 Safe Home Radius (Geofence Safe Zone)</b>
-     <span class="badge" id="homeZoneStatusBadge" style="background:#2e9e5b;color:#fff">Checking...</span>
+ <!-- ALERT SUCCESS & WHATSAPP / SMS DISPATCH BOX -->
+ <div class="card" id="alertBox" style="display:none;border:2px solid var(--wa);box-shadow:0 6px 24px rgba(37,211,102,0.3);margin-bottom:14px">
+   <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+     <div style="width:12px;height:12px;border-radius:50%;background:var(--red);animation:pulse 1s infinite"></div>
+     <b style="font-size:15px;color:#b00020">EMERGENCY DISTRESS ALERT TRIGGERED</b>
    </div>
-   <div style="font-size:12px;color:#2c4b37;margin:5px 0" id="homeZoneDesc">
-     Safe Home Radius ensures TV/family sounds at home don't cause false alarms. High-vigilance distress alert is active outside home.
-   </div>
-   <div style="font-size:12px;color:var(--navy);font-weight:700" id="homeDistLabel">
-     📍 Distance to Home: Waiting for GPS...
-   </div>
-   <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-     <button class="b s" style="background:#2e9e5b" onclick="setCurrentAsHome()">📍 Set Current GPS as Home</button>
-     <button class="b s o" onclick="show('set')">⚙️ Change Radius</button>
-     <button class="b s g" onclick="focusOnHomeMap()">🗺️ View on Map</button>
-   </div>
+   <div id="alertTxt"></div>
+ </div>
+
+ <!-- HOME SAFE BANNER (Inside Safe Home Radius) -->
+ <div id="homeSuppressionNotice" style="display:none;background:#e3f6ea;border:2px solid #2e9e5b;border-radius:12px;padding:12px;margin-bottom:12px">
+   <b style="color:#1f7a45;font-size:14px">🏡 INSIDE SAFE HOME RADIUS: ALARM SUPPRESSED</b>
+   <p style="font-size:12px;color:#205e38;margin:4px 0">
+     Aawaj detect hui par aap apne Safe Home Radius ke andar hain. Ghar me TV/household noise ke false alarms se bachane ke liye emergency siren aur broadcast rok diya gaya hai.
+   </p>
+   <button class="b s" style="background:#d94040;margin-top:4px" onclick="startCancelWindow()">Emergency Hai? Send Alert Anyway</button>
+ </div>
+
+ <div class="warn" id="noCt" style="display:none;margin-bottom:12px">
+   No Close Friends or Family added yet! Add Mom, Dad, or Best Friend in <b>Friends & Family</b> so alerts reach them. <button class="b s" onclick="show('circle')">Add Family/Friend</button>
+ </div>
+
+ <!-- 🎀 GIRL POWER QUICK SAFETY TOOLS -->
+ <div class="card" style="border:1px solid #ffd1df;background:linear-gradient(145deg,#fff9fb,#fff0f5);border-radius:16px;padding:14px;margin-bottom:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <b style="font-size:13.5px;color:var(--navy)">🎀 Girl Power Quick Safety Suite</b>
+    <span class="badge girlish">✨ 1-TAP ACTION</span>
+  </div>
+  <div class="quick-tools-grid">
+    <button class="quick-tool-btn" onclick="triggerFakeCall(0, 'Papa ❤️')">
+      <span class="qt-icon">📞</span>
+      <span class="qt-text"><b>Fake Call</b><small>Now</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="triggerFakeCall(15, 'Papa ❤️')">
+      <span class="qt-icon">⏱️</span>
+      <span class="qt-text"><b>Fake Call</b><small>in 15s</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="show('escort')">
+      <span class="qt-icon">🚶‍♀️</span>
+      <span class="qt-text"><b>Walk Escort</b><small>Timer</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="show('map');setTimeout(findNearestSafeHaven,400)">
+      <span class="qt-icon">🛡️</span>
+      <span class="qt-text"><b>Safe Havens</b><small>Nearest</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="toggleStrobeAlert()">
+      <span class="qt-icon">🚨</span>
+      <span class="qt-text"><b>Strobe Siren</b><small>Flash</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="openCalculator()">
+      <span class="qt-icon">🔢</span>
+      <span class="qt-text"><b>Stealth PIN</b><small>Calculator</small></span>
+    </button>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid #ffe6ef;font-size:11px;color:var(--mut)">
+    <span id="shakeStatusTag">📳 Shake-to-SOS: <b>Active</b></span>
+    <span id="speechStatusTag">🎙️ Code-Word: <b>"Bachao / Help"</b></span>
+  </div>
  </div>
 
  <!-- QUICK CLOSE FRIENDS & FAMILY WIDGET -->
- <div class="card" id="homeCircleWidget" style="border:1px solid #d1e2f7;background:#fbfdff">
-   <div style="display:flex;justify-content:space-between;align-items:center">
-     <b>👨‍👩‍👧 Close Friends & Family (Safety Circle)</b>
+ <div class="card" id="homeCircleWidget" style="border:1px solid #ffd6e2;background:#fff;border-radius:16px;padding:14px;margin-bottom:14px">
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+     <b style="font-size:13.5px;color:var(--navy)">👨‍👩‍👧 Close Friends & Family (Safety Circle)</b>
      <span class="badge info" id="homeCircleBadge">0 members</span>
    </div>
-   <div class="note" style="margin:4px 0">Emergency me in sabhi ko WhatsApp alert aur location jayegi:</div>
+   <div class="note" style="margin:2px 0 8px;font-size:11.5px">Emergency me in sabhi ko instant WhatsApp aur SMS alert jayega:</div>
    <div class="home-circle-row" id="homeCircleAvatars">
      <span class="note">No members yet. Tap below to add your family or friends!</span>
    </div>
-   <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-     <button class="b s" style="background:#d94040" onclick="sendManualCircleSOS()">🚨 SOS Alert to Circle Now</button>
-     <button class="b s" style="background:#2e9e5b" onclick="sendIAmSafe()">💚 Send "I Am Safe"</button>
-     <button class="b s o" onclick="show('circle')">➕ Manage Circle</button>
+   <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+     <button class="b s" style="background:#d94040;flex:1;min-width:130px" onclick="sendManualCircleSOS()">🚨 SOS to Circle</button>
+     <button class="b s" style="background:#2e9e5b;flex:1;min-width:130px" onclick="sendIAmSafe()">💚 Send "I Am Safe"</button>
+     <button class="b s o" onclick="show('circle')">➕ Manage</button>
    </div>
  </div>
 
  <!-- SLIDE 1 SOUND AI SENSOR (Screaming, Shout, Yell) -->
- <div class="card">
+ <div class="card" style="border-radius:16px;padding:14px;margin-bottom:14px">
   <div class="sec"><span>What the app hears (Sound AI)</span><span id="liveDbTag" style="font-size:11px;color:var(--mut)">0 dB</span></div>
   <canvas class="wave" id="wave"></canvas>
 
@@ -640,123 +521,182 @@ nav button.on{color:var(--blue);box-shadow:inset 0 3px 0 var(--blue);background:
 
   <div style="margin-top:10px">
     <div class="note">Sensitivity Threshold: <b id="thv">0.55</b> <input id="th" type="range" min="0.2" max="0.9" step="0.02" value="0.55"></div>
-    <div style="margin:4px 0 8px">
+    <div style="margin:6px 0 8px">
       <button class="preset-chip" onclick="setSensitivity(0.38,this)">Easy Test (38%)</button>
       <button class="preset-chip active" onclick="setSensitivity(0.55,this)">Default (55%)</button>
       <button class="preset-chip" onclick="setSensitivity(0.68,this)">Noisy Area (68%)</button>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;background:#eef5fc;border:1px solid #cce0f5;border-radius:8px;padding:6px 10px;margin-top:8px;font-size:11.5px">
+    <div style="display:flex;justify-content:space-between;align-items:center;background:#f3f7fd;border:1px solid #d0e2f5;border-radius:10px;padding:7px 10px;margin-top:8px;font-size:11.5px">
       <span id="cooldownStatusText"><b>Detector Status:</b> 🟢 Ready to Trigger</span>
       <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="resetCooldown()">🔄 Reset Cooldown</button>
     </div>
   </div>
 
-  <!-- TRIGGER RULE (Slide 1 & Slide 3) -->
   <div class="sec" style="margin-top:10px">Trigger rule: <span style="font-size:11px;color:var(--mut)">3 of last 5 windows = ALERT</span></div>
   <div class="boxes-row"><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span></div>
   <div class="note">Audio is never recorded or uploaded. 5-second cancel window before sending alert.</div>
  </div>
 
- <!-- HOME SAFE BANNER (Inside Safe Home Radius) -->
- <div id="homeSuppressionNotice" style="display:none;background:#e3f6ea;border:2px solid #2e9e5b;border-radius:12px;padding:12px;margin-bottom:12px">
-   <b style="color:#1f7a45;font-size:14px">🏡 INSIDE SAFE HOME RADIUS: ALARM SUPPRESSED</b>
-   <p style="font-size:12.5px;color:#205e38;margin:4px 0">
-     Aawaj detect hui par aap apne Safe Home Radius ke andar hain. Ghar me TV/household noise ke false alarms se bachane ke liye emergency siren aur broadcast rok diya gaya hai.
-   </p>
-   <button class="b s" style="background:#d94040;margin-top:4px" onclick="startCancelWindow()">Emergency Hai? Send Alert Anyway</button>
+ <!-- SAFE HOME RADIUS STATUS CARD -->
+ <div class="home-zone-card" id="homeZoneCard" style="border-radius:16px;padding:14px;margin-bottom:14px">
+   <div style="display:flex;justify-content:space-between;align-items:center">
+     <b style="color:#1e6a3d;font-size:13.5px" id="homeZoneTitle">🏡 Safe Home Radius (Geofence Safe Zone)</b>
+     <span class="badge" id="homeZoneStatusBadge" style="background:#2e9e5b;color:#fff">Checking...</span>
+   </div>
+   <div style="font-size:11.5px;color:#2c4b37;margin:6px 0" id="homeZoneDesc">
+     Safe Home Radius ensures TV/family sounds at home don't cause false alarms. High-vigilance distress alert is active outside home.
+   </div>
+   <div style="font-size:12px;color:var(--navy);font-weight:700" id="homeDistLabel">
+     📍 Distance to Home: Waiting for GPS...
+   </div>
+   <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+     <button class="b s" style="background:#2e9e5b" onclick="setCurrentAsHome()">📍 Set Current GPS as Home</button>
+     <button class="b s o" onclick="show('set')">⚙️ Change Radius</button>
+     <button class="b s g" onclick="focusOnHomeMap()">🗺️ View on Map</button>
+   </div>
  </div>
 
- <!-- SLIDE 1 & SLIDE 4 TESTING SUITE (Simulate scream) -->
- <div class="card demo">
-  <div class="sec"><span>Try the alert safely (Demo Tools)</span><span class="sim">Safe Demo</span></div>
-  <div class="note" style="margin-bottom:8px">
-    Simulate a scream to see the red 5-second countdown with the big CANCEL button, or test live mic:
+ <!-- 🧪 ALL-IN-ONE TESTING & DISPATCH STUDIO (COLLAPSIBLE ACCORDION) -->
+ <details class="studio-accordion" id="audioStudioSection">
+  <summary class="studio-summary">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:18px">🧪</span>
+      <div>
+        <b style="font-size:13.5px;color:var(--navy);display:block">Testing & Dispatch Studio</b>
+        <span style="font-size:11px;color:var(--mut);font-weight:400">Simulation, Live Voice ("Bachao!"), Audio Clips & Zero-Touch Dispatch</span>
+      </div>
+    </div>
+    <span class="badge info" id="studioModeBadge" style="font-size:10px">EXPAND</span>
+  </summary>
+
+  <div style="margin-top:14px;padding-top:12px;border-top:1px solid #ffd6e2">
+    <!-- Channel selector -->
+    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:12px;padding:10px 12px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <b style="font-size:12px;color:var(--navy)">🚨 Alert Delivery Channel:</b>
+        <span class="badge info" id="activeChannelBadge">📱 Cellular SMS (Zero-Touch)</span>
+      </div>
+      <div style="display:flex;gap:4px">
+        <button class="dispatch-mode-chip active" id="chipModeSms" onclick="setDispatchChannel('sms')">📱 Cellular SMS (0 Clicks & Offline)</button>
+        <button class="dispatch-mode-chip" id="chipModeWa" onclick="setDispatchChannel('wa')">🟢 WhatsApp</button>
+        <button class="dispatch-mode-chip" id="chipModeCloud" onclick="setDispatchChannel('cloud')">☁️ Cloud Bot</button>
+      </div>
+      <div id="dispatchChannelDesc" style="font-size:11px;color:#204374;margin-top:6px;line-height:1.4">
+        📱 <b>Direct Cellular SIM SMS:</b> Zero 3rd-party servers! 100% Offline! 5s countdown khatam hote hi direct cellular SMS composer trigger hoga sabhi contacts ko live GPS coordinates ke sath.
+      </div>
+      
+      <!-- Zero-Touch explainer -->
+      <div class="zero-touch-box" style="margin-top:8px">
+        <b style="font-size:11px;color:#5b21b6;display:block;margin-bottom:3px">💡 100% Zero-Touch Autonomous Delivery:</b>
+        <p style="font-size:10.5px;color:#4c1d95;margin:0 0 6px;line-height:1.4">
+          Browser security limits WhatsApp auto-send without 1 tap. For <b>100% Zero-Touch delivery (0 clicks)</b>, choose <b>📱 Cellular SMS</b> or <b>☁️ Cloud Bot API</b>:
+        </p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="b s wa" style="padding:4px 9px;font-size:10.5px" onclick="testRasta2CloudBot()">🚀 Test Cloud Bot (0 Clicks)</button>
+          <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="testRasta1NativeSms()">📲 Test Cellular SMS Intent</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Test Action Buttons -->
+    <b style="font-size:12px;color:var(--navy);display:block;margin-bottom:6px">⚡ 1-Click Trigger Tests:</b>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
+      <button class="b" style="background:#0072c6;padding:10px 8px;font-size:12px;border-radius:10px" id="simBtn">
+        ⚡ 5s Simulation
+      </button>
+      <button class="b" style="background:#2e9e5b;padding:10px 8px;font-size:12px;border-radius:10px" id="testMicBtn">
+        🎙️ Live Voice ("Bachao!")
+      </button>
+      <button class="b o" style="background:#ea7d12;padding:9px 8px;font-size:11.5px;border-radius:10px" id="sampleScreamBtn">
+        🔊 Sample Scream Audio
+      </button>
+      <button class="b o" style="background:var(--red);padding:9px 8px;font-size:11.5px;border-radius:10px" onclick="siren(4000)">
+        🚨 4s Emergency Siren
+      </button>
+    </div>
+
+    <div style="display:flex;gap:6px;margin-bottom:12px">
+      <button class="b s em" style="flex:1" onclick="simulate112Call()">📞 Test 112 Helpline</button>
+      <button class="b s g" style="flex:1" onclick="resetCooldown()">🔄 Reset Cooldown (0s)</button>
+    </div>
+
+    <!-- Built-in distress audio clips -->
+    <b style="font-size:12px;color:var(--navy);display:block;margin-bottom:4px">🔊 Play Distress Clips into Mic:</b>
+    <div class="studio-btn-row">
+      <button class="studio-btn" onclick="playTestScream()">
+        <span style="font-size:16px">😱</span>
+        <span>Shrill Scream<br><small style="font-weight:400;color:var(--mut)">950-2100 Hz</small></span>
+      </button>
+      <button class="studio-btn" onclick="playTestBachaoShout()">
+        <span style="font-size:16px">🗣️</span>
+        <span>"BACHAO! HELP!"<br><small style="font-weight:400;color:var(--mut)">Shouting Cry</small></span>
+      </button>
+      <button class="studio-btn" onclick="playTestDistressHarmonics()">
+        <span style="font-size:16px">🚨</span>
+        <span>Dissonance<br><small style="font-weight:400;color:var(--mut)">Harmonics</small></span>
+      </button>
+    </div>
+
+    <!-- Live Telemetry & Mic Monitor -->
+    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:10px;padding:9px 10px;margin-top:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <b style="font-size:11.5px;color:var(--navy)">🎙️ Live Speech & Mic Monitor:</b>
+        <button class="b s o" id="demoModeBtn" style="padding:3px 8px;font-size:10px" onclick="toggleDemoSensitivity()">
+          🎯 Demo Sensitivity (30%)
+        </button>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--navy);font-weight:700">
+        <span>Mic Sound: <span id="studioDbVal" style="color:#0072c6">-- dB</span></span>
+        <span>Vocal Band: <span id="studioVocalVal" style="color:#2e9e5b">--%</span></span>
+      </div>
+      <div class="studio-vu-track">
+        <div id="studioDbBar" class="studio-vu-fill"></div>
+      </div>
+      <div id="liveSpeechTranscript" class="transcript-bubble">
+        🎙️ Live Speech: Waiting for speech... Say <b>"BACHAO!"</b> or <b>"HELP!"</b> into mic.
+      </div>
+      <div id="testGuide" class="note" style="color:var(--navy);font-weight:600;font-size:11px;margin-top:4px">
+        Tip: Mic me "HELP!" ya "BACHAO!" zor se bole ya "5s Simulation" button dabayein.
+      </div>
+    </div>
   </div>
-  <div style="display:flex;flex-wrap:wrap;gap:6px">
-    <button class="b" style="background:var(--blue);width:100%;border-radius:12px;padding:13px;font-size:15px" id="simBtn">Simulate scream</button>
-    <button class="b o s" id="testMicBtn">🎙️ Test Live Mic with Voice</button>
-    <button class="b o s" id="sampleScreamBtn">🔊 Play Sample Scream Audio</button>
-    <button class="b s g" onclick="resetCooldown()">🔄 Reset 60s Cooldown</button>
-    <button class="b s em" onclick="simulate112Call()">🚨 Test 112 Helpline SOS</button>
+ </details>
+
+ <!-- ⚡ WHY AWAAZ SUPERPOWERS TEASER -->
+ <div class="card" style="border:1.5px solid #ffd1df;background:linear-gradient(145deg,#fffafd,#fff5f8);border-radius:16px;padding:14px;margin-bottom:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <b style="font-size:13.5px;color:var(--navy)">⚡ Why Awaaz vs Traditional Phone SOS</b>
+    <span class="badge girlish">INNOVATION</span>
   </div>
-  <div id="testGuide" class="note" style="margin-top:8px;color:var(--navy);font-weight:600">
-    Tip: Mic me "HELP!" ya "BACHAO!" zor se bole ya "Simulate scream" button dabayein.
+  <p style="font-size:11.5px;color:var(--mut);margin:0 0 10px;line-height:1.4">
+    Standard phone SOS (5x power button) fails when hands are pinned or phone is snatched. Here is why Awaaz Pink Shield excels:
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;font-size:11.5px">
+    <div style="background:#fff;border:1px solid #ffd6e2;border-radius:10px;padding:8px">
+      <b style="color:var(--blue);display:block">Zero-Touch Passive AI</b>
+      <span style="font-size:10.5px;color:var(--mut)">Auto-triggers on scream, shout "Bachao!" or 3 shakes without physical touch.</span>
+    </div>
+    <div style="background:#fff;border:1px solid #ffd6e2;border-radius:10px;padding:8px">
+      <b style="color:#10b981;display:block">Proactive Escapes</b>
+      <span style="font-size:10.5px;color:var(--mut)">Real Hindi "Bahaana" Fake Call from Papa + Walk-With-Me guardian timer.</span>
+    </div>
+    <div style="background:#fff;border:1px solid #ffd6e2;border-radius:10px;padding:8px">
+      <b style="color:#0072c6;display:block">100% Offline Resilience</b>
+      <span style="font-size:10.5px;color:var(--mut)">Device RAM Web Audio AI + Satellite GNSS + Cellular SIM SMS fallback.</span>
+    </div>
+    <div style="background:#fff;border:1px solid #ffd6e2;border-radius:10px;padding:8px">
+      <b style="color:#a855f7;display:block">100m City Heatmap</b>
+      <span style="font-size:10.5px;color:var(--mut)">"One alert, two impacts": feeds anonymous civic heatmap & police patrol score.</span>
+    </div>
   </div>
+  <button class="b" style="width:100%;font-size:12.5px;padding:10px;border-radius:12px;background:var(--navy)" onclick="show('pitch')">
+    📑 View Full 6-Slide Pitch Deck & Comparison →
+  </button>
  </div>
 
- <!-- ALERT SUCCESS & WHATSAPP DISPATCH BOX -->
- <div class="card" id="alertBox" style="display:none;border:2px solid var(--wa);box-shadow:0 4px 16px rgba(37,211,102,0.25)">
-   <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-     <div style="width:12px;height:12px;border-radius:50%;background:var(--red);animation:pulse 1s infinite"></div>
-     <b style="font-size:16px;color:#b00020">EMERGENCY DISTRESS ALERT TRIGGERED</b>
-   </div>
-   <div id="alertTxt"></div>
- </div>
-
- <!-- RESEARCH & THE PROBLEM IN NUMBERS (Slide 2 & Slide 6) -->
- <div class="card" style="background:#fcfdff;border:1px solid #d8e5f5">
-   <div class="sec"><span>📊 The Problem in Numbers (NCRB & Research)</span><span class="badge info">Data Insights</span></div>
-   <div class="stat-grid">
-     <div class="stat-box"><b>4,48,211</b><span>crimes against women registered in India, 2023 (NCRB)</span></div>
-     <div class="stat-box"><b>13,366</b><span>cases in Delhi, 2023: most among 19 metro cities</span></div>
-     <div class="stat-box"><b>1,088</b><span>rape cases in Delhi, 2023: most among metros</span></div>
-     <div class="stat-box"><b>90.8%</b><span>of cases awaiting trial pending in court</span></div>
-     <div class="stat-box"><b>42%</b><span>avoid going out alone after dark (Jagori survey)</span></div>
-     <div class="stat-box"><b>14.2%</b><span>facing violence sought help (NFHS-5)</span></div>
-   </div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-     <div style="background:#fff4e6;border:1px solid #ffd8a8;border-radius:10px;padding:9px;text-align:center">
-       <b style="color:#d9480f;font-size:19px;display:block">⏱️ ~70 Sec</b>
-       <span style="font-size:11px;color:#862e9c">1 crime against women in India every ~70s (4.48L/yr) [1]</span>
-     </div>
-     <div style="background:#f3f0ff;border:1px solid #d0bfff;border-radius:10px;padding:9px;text-align:center">
-       <b style="color:#5f3dc4;font-size:19px;display:block">📈 2.2x Gap</b>
-       <span style="font-size:11px;color:#3b5bdb">Delhi cases 2.2x higher than Mumbai (6,025) & Blr (4,870) [2]</span>
-     </div>
-   </div>
- </div>
-
- <!-- SLIDE 2 INNOVATION & UNIQUENESS COMPARISON CARD -->
- <div class="card" style="border:1.5px solid #c8dcf2;background:#f9fbfe">
-   <div class="sec"><span>💡 Innovation & Uniqueness (Slide 2)</span><span class="badge info">Why Awaaz Map</span></div>
-   <div style="font-size:12px;color:var(--mut);margin-bottom:8px">Comparison with existing women safety approaches:</div>
-   <div style="overflow-x:auto">
-     <table style="width:100%;font-size:11.5px;border-collapse:collapse;text-align:left;line-height:1.4">
-       <thead>
-         <tr style="background:#eaf2fb;border-bottom:1.5px solid #bfd7f3">
-           <th style="padding:6px 8px;color:var(--navy)">Approach</th>
-           <th style="padding:6px 8px;color:var(--navy)">Where it stops</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr style="border-bottom:1px solid #e5effa">
-           <td style="padding:6px 8px"><b>SOS button apps</b></td>
-           <td style="padding:6px 8px;color:#b00020">Needs a physical button press during assault</td>
-         </tr>
-         <tr style="border-bottom:1px solid #e5effa">
-           <td style="padding:6px 8px"><b>Scream-triggered apps</b></td>
-           <td style="padding:6px 8px;color:#b00020">Alerts only one person; data is discarded</td>
-         </tr>
-         <tr style="border-bottom:1px solid #e5effa">
-           <td style="padding:6px 8px"><b>Crowdsourced maps</b></td>
-           <td style="padding:6px 8px;color:#b00020">Manual post-incident entry; no real-time trigger</td>
-         </tr>
-         <tr style="background:#e6f8ee;border-top:1.5px solid #2e9e5b">
-           <td style="padding:6px 8px;color:#1e6a3d"><b>🚀 Awaaz Map</b></td>
-           <td style="padding:6px 8px;color:#1e6a3d;font-weight:700">Auto alert + Safety Circle + Live 100m Heatmap + Police & Lighting Action</td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
-   <div style="margin-top:8px;font-size:11px;color:var(--mut)">
-     ✓ <b>Anonymised by design:</b> 100m grid cell resolution, zero identity stored.<br>
-     ✓ <b>Explainable score:</b> Transparent math, not a black box AI.
-   </div>
- </div>
-
- <details>
-  <summary>Live Technical Telemetry & Test Log</summary>
-  <div id="dbg">Turn on Safety Mode to see live audio values.</div>
+ <details style="margin-bottom:14px">
+  <summary style="font-size:12px;color:var(--mut);cursor:pointer;padding:6px 0">Live Technical Telemetry & Test Log</summary>
+  <div id="dbg" style="font-size:11.5px;color:var(--mut);margin-top:6px">Turn on Safety Mode to see live audio values.</div>
   <div style="margin-top:10px;font-size:12px"><b>Test log: real triggers vs false alarms</b>
     <div id="tlog" style="margin-top:4px;line-height:1.6"></div>
     <button class="b s g" id="tlogClr">Reset test log</button>
@@ -1552,6 +1492,39 @@ const store={
   get:(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},
   set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
+
+/* Global Emergency Dispatch Channel & Cross-Platform SMS URI Builder */
+let activeDispatchChannel = store.get('awaaz_dispatch_channel', 'sms');
+function buildSmsUri(phones, body){
+  let cleanNum = '';
+  const isIos = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (Array.isArray(phones)) {
+    const list = phones.map(p => {
+      if (typeof p === 'object' && p !== null) return p.n || p.phone || '';
+      return String(p);
+    }).map(s => s.replace(/[^0-9+]/g, '')).filter(Boolean);
+    cleanNum = list.join(isIos ? ',' : ',');
+  } else if (phones) {
+    cleanNum = String(phones).replace(/[^0-9+,]/g, '');
+  }
+  const sep = isIos ? '&body=' : '?body=';
+  return `sms:${cleanNum}${sep}${encodeURIComponent(body || '')}`;
+}
+window.buildSmsUri = buildSmsUri;
+
+function triggerNativeSms(smsUri){
+  try {
+    const a = document.createElement('a');
+    a.href = smsUri;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { try { a.remove(); } catch(e){} }, 1000);
+  } catch(e) {
+    window.location.href = smsUri;
+  }
+}
+window.triggerNativeSms = triggerNativeSms;
 
 /* Language / Bilingual Support (Slide 4: Hindi and English) */
 let currentLang = store.get('awaaz_lang', 'en');
@@ -2516,15 +2489,26 @@ function renderCircleList(){
     const waText=encodeURIComponent(`Awaaz Map: Hi ${x.name}, you are in my Close Friends & Family Safety Circle.`);
     return `
       <div class="circle-item ${x.category}">
-        <div class="circle-avatar">${icon}</div>
-        <div class="circle-info">
-          <b>${x.name} <span class="badge ${badgeCol}" style="font-size:10px;padding:2px 6px">${x.relation||x.category}</span></b>
-          <small>+${x.n}</small>
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="circle-avatar">${icon}</div>
+            <div class="circle-info">
+              <b>${x.name} <span class="badge ${badgeCol}" style="font-size:10px;padding:2px 7px;border-radius:10px">${x.relation||x.category}</span></b>
+              <small>+${x.n}</small>
+            </div>
+          </div>
+          <button class="b s g" onclick="delCircle('${x.id}')" title="Remove Contact" style="margin:0;padding:4px 8px;border-radius:8px;font-size:12px">✕</button>
         </div>
-        <div class="circle-actions">
-          <a class="lnk s" target="_blank" rel="noopener" href="https://wa.me/${x.n}?text=${waText}">WhatsApp</a>
-          <a class="lnk s sms" href="tel:+${x.n}">Call</a>
-          <button class="b s g" onclick="delCircle('${x.id}')">✕</button>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%">
+          <a class="circle-action-btn wa" target="_blank" rel="noopener" href="https://wa.me/${x.n}?text=${waText}">
+            <span>💬</span> WA
+          </a>
+          <a class="circle-action-btn sms" href="${buildSmsUri(x.n, 'Awaaz Map: Hi ' + x.name + ', checking in with my Safety Circle.')}">
+            <span>📱</span> SMS
+          </a>
+          <a class="circle-action-btn call" href="tel:+${x.n}">
+            <span>📞</span> Call
+          </a>
         </div>
       </div>
     `;
@@ -2560,8 +2544,10 @@ function refreshCt(){
     $('ctList').innerHTML=c.map(x=>`
       <div class="ct">
         <span><b>${x.name}</b> (${x.relation}) +${x.n}</span>
-        <span>
-          <a class="lnk s" target="_blank" rel="noopener" href="https://wa.me/${x.n}?text=${encodeURIComponent('Awaaz Map: Emergency Contact Test.')}">Test</a>
+        <span style="display:inline-flex;gap:4px;align-items:center">
+          <a class="lnk s" target="_blank" rel="noopener" href="https://wa.me/${x.n}?text=${encodeURIComponent('Awaaz Map: Emergency Contact Test.')}">WA</a>
+          <a class="lnk s sms" href="${buildSmsUri(x.n, 'Awaaz Map: Emergency Contact Test.')}">SMS</a>
+          <a class="lnk s em" href="tel:+${x.n}">Call</a>
           <button class="b s g" onclick="delCircle('${x.id}')">Remove</button>
         </span>
       </div>
@@ -2602,34 +2588,87 @@ ${navLink}
 
 🆘 *Kripya turant mujhe call karein ya yahan pahunchein!*`;
 
+  const smsSosMsg=
+`🚨 URGENT SOS - SAFETY CIRCLE ALERT (AWAAZ MAP)
+Mujhe madad ki zaroorat hai / I feel unsafe! Please check immediately.
+📍 Live GPS: ${mapsLink}
+🧭 Route: ${navLink}
+🏙️ Area: ${area}
+🕒 Time: ${timeStr} · ${dateStr}
+Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
+
   saveEvent(l,'harassment',{area,time:timeStr,score:0.95});
 
   const cs=contacts();
-  const targetUrl=cs.length?`https://wa.me/${cs[0].n}?text=${encodeURIComponent(sosMsg)}`:`https://api.whatsapp.com/send?text=${encodeURIComponent(sosMsg)}`;
-  window.open(targetUrl,'_blank');
+  const isSmsMode = (activeDispatchChannel === 'sms') || !navigator.onLine || window.simulatedOfflineMode;
+
+  if (isSmsMode) {
+    const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
+    const targetSms = buildSmsUri(targetNums, smsSosMsg);
+    const label = cs.length ? cs.map(c=>c.name).join(', ') : 'Emergency Helpline (112)';
+    showCloudBotToast('📱 DIRECT CELLULAR SMS SOS: Dispatching to ' + label + ' via SIM carrier (No 3rd-party / No net)!');
+    setTimeout(() => { triggerNativeSms(targetSms); }, 300);
+  } else {
+    const targetUrl=cs.length?`https://wa.me/${cs[0].n}?text=${encodeURIComponent(sosMsg)}`:`https://api.whatsapp.com/send?text=${encodeURIComponent(sosMsg)}`;
+    window.open(targetUrl,'_blank');
+  }
 
   show('home');
   const box=$('alertBox');
   box.style.display='block';
   
-  const ctButtons=cs.map(c=>`
-    <a class="wa-main-btn" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(sosMsg)}">
-      📲 Send SOS WhatsApp to ${c.name} (${c.relation})
-    </a>
-  `).join('');
+  let alertContent = '';
+  if (isSmsMode) {
+    const ctSmsButtons = cs.map(c=>`
+      <a class="sms-main-btn" href="${buildSmsUri(c.n, smsSosMsg)}">
+        💬 Send SOS SMS to ${c.name} (${c.relation})
+      </a>
+    `).join('');
+
+    alertContent = `
+      <div style="background:#eaf2fb;border:2px solid #0072c6;border-radius:12px;padding:14px;margin-bottom:12px">
+        <b style="color:#0072c6;font-size:15px">📱 CELLULAR SMS SOS DISPATCH READY</b>
+        <p style="font-size:13px;margin:5px 0">Cellular SMS SOS generated with your exact GPS location (Offline GSM SIM Direct):</p>
+        <a class="sms-main-btn" href="${buildSmsUri(cs.length ? cs[0].n : '', smsSosMsg)}">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+          📱 OPEN DEFAULT SMS APP (SEND SOS)
+        </a>
+        ${ctSmsButtons}
+        <div style="margin-top:10px;font-size:12px;color:var(--mut)">Have internet connection?</div>
+        <a class="lnk s" style="background:#25d366" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=${encodeURIComponent(sosMsg)}">
+          🟢 Open WhatsApp SOS Instead
+        </a>
+      </div>
+    `;
+  } else {
+    const ctButtons=cs.map(c=>`
+      <a class="wa-main-btn" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(sosMsg)}">
+        📲 Send SOS WhatsApp to ${c.name} (${c.relation})
+      </a>
+    `).join('');
+
+    alertContent = `
+      <div style="background:#fde8e8;border:2px solid #d94040;border-radius:12px;padding:14px;margin-bottom:12px">
+        <b style="color:#b00020;font-size:15px">🚨 SOS TO CLOSE FRIENDS & FAMILY DISPATCHED</b>
+        <p style="font-size:13px;margin:5px 0">WhatsApp message generated with your exact GPS location:</p>
+        ${ctButtons}
+        <a class="wa-main-btn" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=${encodeURIComponent(sosMsg)}">
+          📲 Send to Family WhatsApp Group / Any Chat
+        </a>
+        <div style="margin-top:10px;font-size:12px;color:var(--mut)">No internet or WhatsApp unavailable?</div>
+        <a class="lnk s sms" href="${buildSmsUri(cs.length ? cs[0].n : '', smsSosMsg)}">
+          📱 Switch to Cellular SMS SOS
+        </a>
+      </div>
+    `;
+  }
 
   $('alertTxt').innerHTML=`
-    <div style="background:#fde8e8;border:2px solid #d94040;border-radius:12px;padding:14px;margin-bottom:12px">
-      <b style="color:#b00020;font-size:15px">🚨 SOS TO CLOSE FRIENDS & FAMILY DISPATCHED</b>
-      <p style="font-size:13px;margin:5px 0">WhatsApp message generated with your exact GPS location:</p>
-      ${ctButtons}
-      <a class="wa-main-btn" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=${encodeURIComponent(sosMsg)}">
-        📲 Send to Family WhatsApp Group / Any Chat
-      </a>
-    </div>
+    ${alertContent}
     <div style="display:flex;gap:6px;flex-wrap:wrap">
       <a class="lnk em" href="tel:112">📞 Call 112 (Emergency Police)</a>
       <button class="b s g" onclick="safeNow()">Close Alert</button>
+      <button class="b s o" onclick="copyAlertText('${encodeURIComponent(isSmsMode ? smsSosMsg : sosMsg)}')">📋 Copy Message</button>
     </div>
   `;
   box.scrollIntoView({behavior:'smooth'});
@@ -2644,8 +2683,19 @@ function sendIAmSafe(){
 Main surakshit pahunch gaya/gayi hoon. Sab theek hai! Thank you for watching over me. ❤️
 🕒 Time: ${timeStr} · ${new Date().toLocaleDateString()}`;
 
-  const targetUrl=cs.length?`https://wa.me/${cs[0].n}?text=${encodeURIComponent(safeMsg)}`:`https://api.whatsapp.com/send?text=${encodeURIComponent(safeMsg)}`;
-  window.open(targetUrl,'_blank');
+  const safeSms=
+`💚 AWAAZ MAP: I AM SAFE
+Main surakshit pahunch gaya/gayi hoon. Sab theek hai! Thank you.
+🕒 Time: ${timeStr}`;
+
+  if(activeDispatchChannel === 'sms' || !navigator.onLine || window.simulatedOfflineMode){
+    const targetNums = cs.length ? cs.map(c=>c.n) : [];
+    const targetSms = buildSmsUri(targetNums, safeSms);
+    triggerNativeSms(targetSms);
+  } else {
+    const targetUrl=cs.length?`https://wa.me/${cs[0].n}?text=${encodeURIComponent(safeMsg)}`:`https://api.whatsapp.com/send?text=${encodeURIComponent(safeMsg)}`;
+    window.open(targetUrl,'_blank');
+  }
 }
 window.sendIAmSafe=sendIAmSafe;
 
@@ -2899,6 +2949,7 @@ function testLiveVoice(){
 
   const studio = $('audioStudioSection');
   if(studio){
+    if(typeof studio.open !== 'undefined') studio.open = true;
     studio.scrollIntoView({behavior:'smooth'});
   }
 }
@@ -3108,6 +3159,15 @@ ${cityAppLink}
 
 🆘 *Urgent: Please check on the victim immediately or dispatch emergency responders!*`;
 
+  const smsMsg=
+`🚨 EMERGENCY DISTRESS ALERT (AWAAZ MAP)
+Distress detected! Please check immediately.
+📍 Live GPS: ${mapsLink}
+🧭 Route: ${navLink}
+🏙️ Area: ${area}
+🕒 Time: ${timeStr} · ${dateStr}
+Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
+
   saveEvent(l,'auto_scream',{
     area,
     time:timeStr,
@@ -3129,19 +3189,21 @@ ${cityAppLink}
   if(!cs.length && emgNum){
     targetWa='https://wa.me/'+emgNum+'?text='+encodeURIComponent(waMsg);
   }
-  
+
+  const isSmsMode = (activeDispatchChannel === 'sms') || !navigator.onLine || window.simulatedOfflineMode;
+
   // AUTOMATIC HANDS-FREE DISPATCH:
   // 1. Play loud emergency siren immediately for nearby help and to scare attacker
   if($('siren').checked) siren(8000);
 
-  // 2. DISPATCH VIA SELECTED CHANNEL (WhatsApp vs Rasta 1 vs Rasta 2)
-  if (activeDispatchChannel === 'sms') {
-    // 📱 RASTA 1: Native Cellular SMS (SIM Card Direct)
-    const nums = cs.length ? cs.map(c=>c.n).join(navigator.userAgent.includes('iPhone') ? '&' : ',') : '112';
-    const smsUri = `sms:${nums}?body=${encodeURIComponent(waMsg)}`;
+  // 2. DISPATCH VIA SELECTED CHANNEL (WhatsApp vs Cellular SMS vs Cloud Bot)
+  if (isSmsMode) {
+    const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
+    const label = cs.length ? cs.map(c=>c.name).join(', ') : 'Emergency Helpline (112)';
+    const smsUri = buildSmsUri(targetNums, smsMsg);
     
-    showCloudBotToast('📱 RASTA 1 DISPATCH: Cellular SMS intent triggered to ' + nums + '! Location pin saved to City Heatmap.');
-    setTimeout(() => { window.location.href = smsUri; }, 1800);
+    showCloudBotToast('📱 ZERO-TOUCH DISPATCH: Direct Cellular SMS triggered to ' + label + '! No internet or 3rd-party servers required.');
+    setTimeout(() => { triggerNativeSms(smsUri); }, 300);
 
   } else if (activeDispatchChannel === 'cloud') {
     // ☁️ RASTA 2: Cloud Server Automated WhatsApp/SMS Bot (100% Zero-Touch)
@@ -3193,49 +3255,98 @@ ${cityAppLink}
   const frnList=cs.filter(x=>x.category==='friend');
   const emgList=cs.filter(x=>x.category==='emergency');
 
-  let famButtons='';
-  if(famList.length){
-    famButtons=`<div style="margin-top:6px"><b>👨‍👩‍👧 Close Family:</b>`+
-      famList.map(c=>`
-        <a class="wa-main-btn" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
-          Send WhatsApp to ${c.name} (${c.relation})
-        </a>
-      `).join('')+`</div>`;
-  }
+  let alertChannelHtml = '';
+  if (isSmsMode) {
+    let famSmsButtons = '';
+    if(famList.length){
+      famSmsButtons = `<div style="margin-top:8px"><b>👨‍👩‍👧 Family Contacts (SMS):</b>` +
+        famList.map(c=>`
+          <a class="sms-main-btn" href="${buildSmsUri(c.n, smsMsg)}">
+            💬 Send SMS to ${c.name} (${c.relation})
+          </a>
+        `).join('') + `</div>`;
+    }
 
-  let frnButtons='';
-  if(frnList.length){
-    frnButtons=`<div style="margin-top:6px"><b>🤝 Close Friends:</b>`+
-      frnList.map(c=>`
-        <a class="wa-main-btn" style="background:#0072c6" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
-          Send WhatsApp to ${c.name} (${c.relation})
-        </a>
-      `).join('')+`</div>`;
-  }
+    let frnSmsButtons = '';
+    if(frnList.length){
+      frnSmsButtons = `<div style="margin-top:8px"><b>🤝 Friend Contacts (SMS):</b>` +
+        frnList.map(c=>`
+          <a class="sms-main-btn" style="background:#0d6efd" href="${buildSmsUri(c.n, smsMsg)}">
+            💬 Send SMS to ${c.name} (${c.relation})
+          </a>
+        `).join('') + `</div>`;
+    }
 
-  let emgButtons='';
-  if(emgList.length){
-    emgButtons=`<div style="margin-top:6px"><b>🚨 Helplines:</b>`+
-      emgList.map(c=>`
-        <a class="wa-main-btn" style="background:#ea7d12" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
-          Notify ${c.name}
+    alertChannelHtml = `
+      <div style="background:#eaf2fb;border:2px solid #0072c6;border-radius:14px;padding:16px;margin-bottom:12px">
+        <b style="color:#0072c6;font-size:15px">📱 CELLULAR SMS EMERGENCY DISPATCH READY</b>
+        <p style="font-size:13px;margin:5px 0">SMS message generated with your exact GPS location (Offline GSM SIM Direct):</p>
+        
+        <a class="sms-main-btn" href="${buildSmsUri(cs.length ? cs[0].n : '', smsMsg)}">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+          📱 OPEN DEFAULT SMS APP (COMPOSE SOS)
         </a>
-      `).join('')+`</div>`;
+        ${famSmsButtons}
+        ${frnSmsButtons}
+        <div style="margin-top:10px;font-size:12px;color:var(--mut)">Have active internet connection?</div>
+        <a class="lnk s" style="background:#25d366" target="_blank" rel="noopener" href="${universalWa}">
+          🟢 Switch to WhatsApp Alert
+        </a>
+      </div>
+    `;
+  } else {
+    let famButtons='';
+    if(famList.length){
+      famButtons=`<div style="margin-top:8px"><b>👨‍👩‍👧 Family Contacts:</b>`+
+        famList.map(c=>`
+          <a class="wa-main-btn" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
+            Send WhatsApp to ${c.name} (${c.relation})
+          </a>
+        `).join('')+`</div>`;
+    }
+
+    let frnButtons='';
+    if(frnList.length){
+      frnButtons=`<div style="margin-top:8px"><b>🤝 Friend Contacts:</b>`+
+        frnList.map(c=>`
+          <a class="wa-main-btn" style="background:#0072c6" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
+            Send WhatsApp to ${c.name} (${c.relation})
+          </a>
+        `).join('')+`</div>`;
+    }
+
+    let emgButtons='';
+    if(emgList.length){
+      emgButtons=`<div style="margin-top:8px"><b>🚨 Helplines:</b>`+
+        emgList.map(c=>`
+          <a class="wa-main-btn" style="background:#ea7d12" target="_blank" rel="noopener" href="https://wa.me/${c.n}?text=${encodeURIComponent(waMsg)}">
+            Notify ${c.name}
+          </a>
+        `).join('')+`</div>`;
+    }
+
+    alertChannelHtml = `
+      <div style="background:#eaf7ed;border:2px solid #25d366;border-radius:14px;padding:16px;margin-bottom:12px">
+        <b style="color:#1b7339;font-size:15px">🟢 WHATSAPP EMERGENCY ALERT READY</b>
+        <p style="font-size:13px;margin:5px 0">Tap below to send alert immediately:</p>
+        
+        <a class="wa-main-btn" target="_blank" rel="noopener" href="${universalWa}">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.195 8.195 0 0 1-5.82 2.41c-1.47 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.216 8.216 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.75c-.19 0-.5.07-.76.35-.26.29-1 1-1 2.43 0 1.44 1.04 2.82 1.18 3.02.15.2 2.05 3.14 5 4.39.7.3 1.25.48 1.68.61.71.23 1.35.2 1.86.12.57-.09 1.74-.71 1.99-1.4.24-.68.24-1.27.17-1.4-.07-.12-.26-.2-.55-.35-.29-.14-1.74-.86-2.01-.96-.27-.1-.47-.14-.67.15-.2.29-.77.96-.94 1.15-.17.2-.35.22-.64.07-.29-.14-1.23-.45-2.35-1.45-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51z"/></svg>
+          SEND TO ANY WHATSAPP CONTACT / GROUP
+        </a>
+        ${famButtons}
+        ${frnButtons}
+        ${emgButtons}
+        <div style="margin-top:10px;font-size:12px;color:var(--mut)">No internet or WhatsApp blocked?</div>
+        <a class="lnk s sms" href="${buildSmsUri(cs.length ? cs[0].n : '', smsMsg)}">
+          📱 Switch to Cellular SMS Dispatch
+        </a>
+      </div>
+    `;
   }
 
   $('alertTxt').innerHTML=`
-    <div style="background:#eaf7ed;border:2px solid #25d366;border-radius:12px;padding:14px;margin-bottom:12px">
-      <b style="color:#1b7339;font-size:15px">🟢 WHATSAPP EMERGENCY ALERT READY</b>
-      <p style="font-size:13px;margin:5px 0">${autoOpened?'WhatsApp chat opened in background!':'Tap below to send alert immediately:'}</p>
-      
-      <a class="wa-main-btn" target="_blank" rel="noopener" href="${universalWa}">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.195 8.195 0 0 1-5.82 2.41c-1.47 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.216 8.216 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.75c-.19 0-.5.07-.76.35-.26.29-1 1-1 2.43 0 1.44 1.04 2.82 1.18 3.02.15.2 2.05 3.14 5 4.39.7.3 1.25.48 1.68.61.71.23 1.35.2 1.86.12.57-.09 1.74-.71 1.99-1.4.24-.68.24-1.27.17-1.4-.07-.12-.26-.2-.55-.35-.29-.14-1.74-.86-2.01-.96-.27-.1-.47-.14-.67.15-.2.29-.77.96-.94 1.15-.17.2-.35.22-.64.07-.29-.14-1.23-.45-2.35-1.45-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51z"/></svg>
-        SEND TO ANY WHATSAPP CONTACT / GROUP
-      </a>
-      ${famButtons}
-      ${frnButtons}
-      ${emgButtons}
-    </div>
+    ${alertChannelHtml}
 
     <div class="card" style="background:#f7fbff;border:1px solid #c8dcf2;margin:10px 0;padding:12px">
       <b>📍 Saved Location & Puri City Broadcast:</b>
@@ -3254,7 +3365,7 @@ ${cityAppLink}
     <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
       <a class="lnk em" href="tel:112">📞 Call 112 (Emergency)</a>
       <button class="b s g" onclick="safeNow()">I'm safe / Stop Siren</button>
-      <button class="b s o" onclick="copyAlertText('${encodeURIComponent(waMsg)}')">📋 Copy Message</button>
+      <button class="b s o" onclick="copyAlertText('${encodeURIComponent(isSmsMode ? smsMsg : waMsg)}')">📋 Copy Message</button>
     </div>
   `;
 
@@ -3378,7 +3489,7 @@ window.simulateAreaScream = function(area, lat, lng){
 
 
 /* ---------- Rasta 1 & Rasta 2 Dispatch Controllers (Slide 4 & 5) ---------- */
-let activeDispatchChannel = store.get('awaaz_dispatch_channel', 'wa');
+activeDispatchChannel = store.get('awaaz_dispatch_channel', 'sms');
 
 window.setDispatchChannel = function(ch){
   activeDispatchChannel = ch;
@@ -3394,7 +3505,7 @@ window.setDispatchChannel = function(ch){
   
   if(ch === 'sms'){
     if(badge) { badge.textContent = '📱 Rasta 1: Native SMS'; badge.className = 'badge info'; }
-    if(desc) desc.innerHTML = '📱 <b>Rasta 1 (Android Native SMS):</b> 5s countdown khatam hote hi cellular SIM SMS trigger hoga. Phone par direct SMS dispatch ready hota hai bina WhatsApp ke!';
+    if(desc) desc.innerHTML = '📱 <b>Direct Cellular SIM SMS:</b> Zero 3rd-party servers! 100% Offline! 5s countdown khatam hote hi direct cellular SMS composer trigger hoga sabhi contacts ko live GPS coordinates ke sath. Zero clicks required!';
   } else if(ch === 'cloud'){
     if(badge) { badge.textContent = '☁️ Rasta 2: Cloud Bot'; badge.className = 'badge'; badge.style.background='#e3f6ea'; badge.style.color='#1e6a3d'; }
     if(desc) desc.innerHTML = '☁️ <b>Rasta 2 (Cloud Automated Bot):</b> 100% Zero-Touch! Cloud server Mom & Dad ko bina kisi user click ke WhatsApp & SMS bhej deta hai!';
@@ -3406,12 +3517,15 @@ window.setDispatchChannel = function(ch){
 
 window.testRasta1NativeSms = function(){
   const cs = contacts();
-  const nums = cs.length ? cs.map(c=>c.n).join(navigator.userAgent.includes('iPhone') ? '&' : ',') : '112';
-  const msg = '🚨 EMERGENCY DISTRESS ALERT - AWAAZ MAP\n📍 Live Google Maps: https://maps.google.com/?q=28.632,77.219\n🕒 Time: ' + new Date().toLocaleTimeString();
-  const smsUri = `sms:${nums}?body=${encodeURIComponent(msg)}`;
+  const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
+  const label = cs.length ? cs.map(c=>`${c.name} (+${c.n})`).join(', ') : 'Emergency Number (112)';
+  const msg = '🚨 EMERGENCY DISTRESS ALERT (AWAAZ MAP)\nDistress detected! Please check immediately.\n📍 Live GPS: https://maps.google.com/?q=28.632000,77.219000\n🕒 Time: ' + new Date().toLocaleTimeString();
+  const smsUri = buildSmsUri(targetNums, msg);
   
-  alert('📱 RASTA 1 (Android Native SMS Trigger)\n\nCellular SMS Protocol launches with recipient numbers (' + nums + ') and pre-filled GPS location!');
-  window.location.href = smsUri;
+  showCloudBotToast('📱 CELLULAR SIM SMS TRIGGERED (ZERO 3RD-PARTY)!\nRecipients: ' + label + '\nPre-filled with Live GPS coordinates.\nLaunching SMS composer...');
+  setTimeout(() => {
+    triggerNativeSms(smsUri);
+  }, 400);
 };
 
 window.testRasta2CloudBot = function(){

@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1b3f72">
 <script>
-// Auto-flush stale caches & force 0-tap background dispatch
-try {
-  localStorage.setItem('awaaz_dispatch_channel', 'cloud');
-  if ('caches' in window) {
-    caches.keys().then(keys => {
-      keys.forEach(k => {
-        if (k !== 'awaaz-map-v2.6') caches.delete(k);
-      });
-    });
-  }
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => {
-      regs.forEach(r => r.update());
-    });
-  }
-} catch(e) {}
+// Mobile & iOS Immediate Cache Buster & 0-Tap Background Enforcer (v3.0)
+(function(){
+  const APP_VER = 'awaaz-v3.0';
+  try {
+    localStorage.setItem('awaaz_dispatch_channel', 'cloud');
+    const curVer = localStorage.getItem('awaaz_app_version');
+    if (curVer !== APP_VER) {
+      localStorage.setItem('awaaz_app_version', APP_VER);
+      if ('caches' in window) {
+        caches.keys().then(keys => keys.forEach(k => {
+          if (k !== 'awaaz-map-v3.0') caches.delete(k);
+        }));
+      }
+    }
+  } catch(e) {}
+})();
 </script>
 <meta name="mobile-web-app-capable" content="yes">
 <title>Awaaz Map — One alert, two impacts. Women Safety & Live City Safety Heatmap</title>
@@ -406,11 +406,11 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
     <div style="display:flex;align-items:center;gap:7px">
       <span class="status-dot-pulse"></span>
       <span style="font-weight:700;font-size:11.5px;color:#1e6a3d">100% Offline Device AI Active</span>
-      <span style="font-size:10px;color:#527361">· On-device RAM</span>
+      <span style="font-size:10px;color:#527361">· v3.0 (0-Tap Auto-Send)</span>
     </div>
     <div style="display:flex;gap:5px;align-items:center">
-      <button class="mini-chip-btn" onclick="toggleSimulatedOffline()" title="Test offline mode">🧪 Offline Test</button>
-      <button class="mini-chip-btn" onclick="show('pitch')">📑 PPT</button>
+      <button class="mini-chip-btn" onclick="forceAppUpdate()" title="Clear cache & reload latest engine on phone">🔄 Update v3.0</button>
+      <button class="mini-chip-btn" onclick="toggleSimulatedOffline()" title="Test offline mode">🧪 Offline</button>
       <button class="mini-chip-btn" onclick="triggerPwaInstall()">📲 App</button>
     </div>
   </div>
@@ -1627,9 +1627,10 @@ function buildSmsUri(phones, body){
       if (typeof p === 'object' && p !== null) return p.n || p.phone || '';
       return String(p);
     }).map(s => s.replace(/[^0-9+]/g, '')).filter(Boolean);
-    cleanNum = list.join(isIos ? ',' : ',');
+    cleanNum = isIos ? (list[0] || '') : list.join(',');
   } else if (phones) {
     cleanNum = String(phones).replace(/[^0-9+,]/g, '');
+    if (isIos && cleanNum.includes(',')) cleanNum = cleanNum.split(',')[0];
   }
   const sep = isIos ? '&body=' : '?body=';
   return `sms:${cleanNum}${sep}${encodeURIComponent(body || '')}`;
@@ -3239,6 +3240,10 @@ function cancelAlert(){
 }
 $('cancel').onclick=cancelAlert;
 $('sendNowBtn').onclick=()=>{
+  try {
+    const actx = getAudioContext();
+    if(actx && actx.state==='suspended') actx.resume();
+  } catch(e){}
   clearInterval(cdTimer);
   $('ov').style.display='none';
   sendAlert();
@@ -3452,6 +3457,10 @@ window.copyAlertText=(encoded)=>{
 /* Simulate Scream Action (Slide 1 Blue Button - 0 Taps Background Dispatch) */
 $('simBtn').onclick=()=>{
   if($('ov').style.display==='flex')return;
+  try {
+    const actx = getAudioContext();
+    if(actx && actx.state==='suspended') actx.resume();
+  } catch(e){}
   isSim=true;
   window.testModeActive=true;
   lastTrig=0; // Reset cooldown so simulation runs instantly
@@ -4503,14 +4512,48 @@ function shareCivicWhatsApp(){
 }
 window.shareCivicWhatsApp = shareCivicWhatsApp;
 
-// Register Service Worker for 100% Offline PWA Capability (Runs with Zero Internet)
+// Register Service Worker for 100% Offline PWA Capability (Runs with Zero Internet) - v3.0
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('✅ Awaaz Service Worker registered for offline use:', reg.scope))
+    navigator.serviceWorker.register('./sw.js?v=3.0')
+      .then(reg => {
+        console.log('✅ Awaaz Service Worker v3.0 registered for offline use:', reg.scope);
+        reg.update();
+      })
       .catch(err => console.warn('SW registration notice:', err));
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      console.log('[Awaaz] New Service Worker active, reloading for 0-tap engine...');
+      window.location.reload();
+    });
   });
 }
+
+// Fail-safe manual cache flusher for Mobile & iOS devices
+window.forceAppUpdate = function(){
+  showCloudBotToast('🔄 Flashing mobile cache & loading latest v3.0 0-Tap engine...');
+  try {
+    localStorage.setItem('awaaz_dispatch_channel', 'cloud');
+    localStorage.setItem('awaaz_app_version', 'awaaz-v3.0');
+    if ('caches' in window) {
+      caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).then(() => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(regs => {
+            Promise.all(regs.map(r => r.unregister())).then(() => {
+              window.location.href = window.location.pathname + '?upd=' + Date.now();
+            });
+          });
+        } else {
+          window.location.href = window.location.pathname + '?upd=' + Date.now();
+        }
+      });
+    } else {
+      window.location.href = window.location.pathname + '?upd=' + Date.now();
+    }
+  } catch(e) {
+    window.location.reload(true);
+  }
+};
 
 // Initial offline check
 setTimeout(() => {

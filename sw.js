@@ -1,5 +1,5 @@
-/* Awaaz Map Service Worker (Offline PWA Engine) - v2.6 */
-const CACHE_NAME = 'awaaz-map-v2.6';
+/* Awaaz Map Service Worker (Offline PWA Engine) - v3.0 */
+const CACHE_NAME = 'awaaz-map-v3.0';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -16,7 +16,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Awaaz SW] Pre-caching static assets for offline safety mode');
+      console.log('[Awaaz SW] Pre-caching static assets for v3.0');
       return cache.addAll(STATIC_ASSETS).catch(err => {
         console.warn('[Awaaz SW] Some assets could not be pre-cached:', err);
       });
@@ -29,7 +29,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.filter((key) => key !== CACHE_NAME).map((key) => {
-          console.log('[Awaaz SW] Deleting stale cache:', key);
+          console.log('[Awaaz SW] Deleting older stale cache:', key);
           return caches.delete(key);
         })
       );
@@ -41,10 +41,10 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
-  // For HTML documents / page navigation, ALWAYS use Network-First to prevent stale cache!
+  // For HTML documents / page navigation, ALWAYS use Network-First to prevent stale cache on Mobile & iOS!
   if (req.mode === 'navigate' || (req.headers.get('accept') && req.headers.get('accept').includes('text/html'))) {
     event.respondWith(
-      fetch(req).then((networkResponse) => {
+      fetch(req, { cache: 'reload' }).then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
           const clone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));

@@ -1,5 +1,5 @@
-/* Awaaz Map Service Worker (Offline PWA Engine) */
-const CACHE_NAME = 'awaaz-map-v1.2';
+/* Awaaz Map Service Worker (Offline PWA Engine) - v2.6 */
+const CACHE_NAME = 'awaaz-map-v2.6';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -28,7 +28,10 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+        keys.filter((key) => key !== CACHE_NAME).map((key) => {
+          console.log('[Awaaz SW] Deleting stale cache:', key);
+          return caches.delete(key);
+        })
       );
     }).then(() => self.clients.claim())
   );
@@ -36,14 +39,29 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  
-  // Audio, speech, and live GPS APIs run on-device, but external assets should load offline
   if (req.method !== 'GET') return;
 
+  // For HTML documents / page navigation, ALWAYS use Network-First to prevent stale cache!
+  if (req.mode === 'navigate' || (req.headers.get('accept') && req.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(req).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+        }
+        return networkResponse;
+      }).catch(() => {
+        console.log('[Awaaz SW] Network offline, serving cached index.html');
+        return caches.match(req).then(res => res || caches.match('./index.html'));
+      })
+    );
+    return;
+  }
+
+  // For static assets, Cache-First with background revalidation
   event.respondWith(
     caches.match(req).then((cachedResponse) => {
       if (cachedResponse) {
-        // Return cached version, revalidate in background if online
         if (navigator.onLine) {
           fetch(req).then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
@@ -63,11 +81,6 @@ self.addEventListener('fetch', (event) => {
           cache.put(req, responseToCache);
         });
         return networkResponse;
-      }).catch(() => {
-        // Fallback for HTML documents if offline
-        if (req.headers.get('accept') && req.headers.get('accept').includes('text/html')) {
-          return caches.match('./index.html');
-        }
       });
     })
   );

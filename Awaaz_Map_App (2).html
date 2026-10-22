@@ -67,11 +67,13 @@ header small{color:var(--sky);font-size:10.5px;letter-spacing:.5px;display:block
 .sos-pill-btn{background:linear-gradient(135deg,#e11d48,#be123c);color:#fff;border:none;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 2px 10px rgba(225,29,72,0.45);animation:sosGlow 2s infinite}
 @keyframes sosGlow{0%,100%{box-shadow:0 0 0 0 rgba(225,29,72,0.6)}50%{box-shadow:0 0 0 6px rgba(225,29,72,0)}}
 
-main{flex:1;padding:14px 16px 90px}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);border-top:1px solid #ffd6e2;z-index:50;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 -4px 20px rgba(0,0,0,0.06);padding:4px 6px}
-nav::-webkit-scrollbar{display:none}
-nav button{flex:0 0 auto;min-width:62px;border:0;background:none;padding:7px 6px;font-weight:700;font-size:10.5px;color:var(--mut);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap;border-radius:12px;transition:all .15s}
-nav button.on{color:var(--blue);background:#fff0f5;font-weight:800}
+main{flex:1;padding:16px 16px 115px}
+nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:440px;display:flex;justify-content:space-around;align-items:center;background:rgba(255,255,255,0.95);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1.5px solid rgba(255,182,193,0.55);border-radius:32px;box-shadow:0 10px 32px -4px rgba(255,45,117,0.18),0 4px 12px rgba(0,0,0,0.05);z-index:1000;padding:6px 8px}
+nav button{flex:1;border:none;background:transparent;padding:7px 4px 6px;font-size:11px;font-weight:700;color:#82637b;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:20px;transition:all .2s cubic-bezier(0.4,0,0.2,1);white-space:nowrap}
+nav button.on{color:var(--blue);background:linear-gradient(135deg,#fff0f5,#ffe4ec);font-weight:800;transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,45,117,0.12)}
+nav button .nav-icon{font-size:20px;line-height:1;transition:transform .2s ease}
+nav button.on .nav-icon{transform:scale(1.18)}
+nav button .nav-lbl{font-size:11px;letter-spacing:.2px}
 .tab{display:none}.tab.on{display:block}
 .card{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid var(--pink-card-border)}
 .sec{font-size:13.5px;font-weight:800;color:var(--navy);margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
@@ -259,8 +261,7 @@ button.b.lavender{background:linear-gradient(135deg,#8b5cf6,#a855f7);color:#fff;
 button.b.emerald{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
 .preset-chip{background:#fff0f5;border:1px solid var(--pink-card-border);border-radius:16px;color:var(--navy)}
 .preset-chip.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 2px 8px var(--pink-glow)}
-nav{background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-top:1px solid #ffd6e2}
-nav button.on{color:var(--blue);box-shadow:inset 0 3px 0 var(--blue);background:#fff0f5}
+/* Modern glassmorphic floating nav active */
 
 /* Quick Tools Carousel Row */
 .quick-tools-row{display:flex;gap:7px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
@@ -339,6 +340,21 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 /* Clean Home Circle Avatars */
 .home-circle-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
 .home-circle-row::-webkit-scrollbar{display:none}
+
+
+/* More Hub & Subpage Styling */
+.more-hub-grid{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.more-hub-card{background:#ffffff;border:1.5px solid #ffd6e2;border-radius:18px;padding:15px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:0 3px 12px rgba(255,45,117,0.05);transition:all .2s ease}
+.more-hub-card:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 6px 20px rgba(255,45,117,0.12)}
+.more-hub-card:active{transform:translateY(0)}
+.hub-icon-box{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.hub-card-content{flex:1;min-width:0}
+.hub-card-content b{display:block;font-size:14px;color:var(--navy);margin-bottom:3px}
+.hub-card-content span{display:block;font-size:11.5px;color:var(--mut);line-height:1.35}
+.hub-arrow{font-size:18px;color:var(--blue);font-weight:800;padding-left:4px}
+.subpage-nav-bar{margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.subpage-back-btn{background:#ffffff;border:1.5px solid #ffd1df;border-radius:12px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--blue);cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all .15s}
+.subpage-back-btn:hover{background:#fff0f5;border-color:var(--blue)}
 
 </style>
 </head>
@@ -896,6 +912,7 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 
 <!-- CITY INCIDENT FEED TAB -->
 <section class="tab" id="t-city">
+ <div class="subpage-nav-bar"><button class="subpage-back-btn" onclick="show('more')">← Back to More Hub</button><span class="badge girlish">PLATFORM HUB</span></div>
  <div class="card">
   <div style="display:flex;justify-content:space-between;align-items:center">
     <b>Puri City ke Live Distress Incidents</b>
@@ -929,6 +946,7 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 
 <!-- REPORT TAB -->
 <section class="tab" id="t-report">
+ <div class="subpage-nav-bar"><button class="subpage-back-btn" onclick="show('more')">← Back to More Hub</button><span class="badge girlish">PLATFORM HUB</span></div>
  <div class="card">
   <b>Report an unsafe spot (Manual Report Form)</b>
   <div class="note" style="margin:4px 0 8px">Anyone can report dark spots, harassment, or heard disturbances to alert the city.</div>
@@ -979,6 +997,7 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 
 <!-- AUTHORITY DASHBOARD TAB (Slide 2 & Slide 3) -->
 <section class="tab" id="t-dash">
+ <div class="subpage-nav-bar"><button class="subpage-back-btn" onclick="show('more')">← Back to More Hub</button><span class="badge girlish">PLATFORM HUB</span></div>
  <div class="card">
   <div style="display:flex;justify-content:space-between;align-items:center">
     <b>AUTHORITY DASHBOARD</b>
@@ -1023,6 +1042,7 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 
 <!-- SLIDES 1 TO 6 COMPLETE PITCH DECK TAB -->
 <section class="tab" id="t-pitch">
+ <div class="subpage-nav-bar"><button class="subpage-back-btn" onclick="show('more')">← Back to More Hub</button><span class="badge girlish">PLATFORM HUB</span></div>
  <div class="card" style="background:linear-gradient(135deg,var(--navy),#0a2856);color:#fff;border-radius:14px;padding:16px">
    <div style="display:flex;justify-content:space-between;align-items:center">
      <b style="font-size:18px;color:#fff">📑 AWAAZ MAP PRESENTATION</b>
@@ -1264,6 +1284,7 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
 
 <!-- SETTINGS TAB -->
 <section class="tab" id="t-set">
+ <div class="subpage-nav-bar"><button class="subpage-back-btn" onclick="show('more')">← Back to More Hub</button><span class="badge girlish">PLATFORM HUB</span></div>
  <!-- SAFE HOME RADIUS CONFIGURATION -->
  
  <!-- RASTA 1: NATIVE ANDROID BACKGROUND CELLULAR SMS -->
@@ -1421,6 +1442,76 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
   <button class="b s o" style="margin-top:6px" id="testSnd">Play 1000 Hz Test Sound</button>
   <button class="b s g" style="margin-top:6px" id="redo">Show Setup Wizard Again</button>
  </div>
+</section>
+
+<!-- MORE TOOLS & CIVIC HUB TAB -->
+<section class="tab" id="t-more">
+  <div class="card" style="background:linear-gradient(135deg,#ff2d75 0%,#ff5c8a 50%,#b5179e 100%);color:#fff;border-radius:20px;padding:22px 18px;margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <b style="font-size:17px;color:#fff">✨ More Safety & Civic Tools</b>
+      <span class="badge girlish" style="background:rgba(255,255,255,0.25);color:#fff;border:none">PLATFORM HUB</span>
+    </div>
+    <p style="font-size:12px;color:#fff0f5;margin:8px 0 0;line-height:1.5">
+      City incident heatmap feeds, police patrol scorecards, municipal grievance letters, complete PPT deck & app settings.
+    </p>
+  </div>
+
+  <div class="more-hub-grid">
+    <div class="more-hub-card" onclick="show('city')">
+      <div class="hub-icon-box" style="background:#e0f2fe;color:#0284c7">🏙️</div>
+      <div class="hub-card-content">
+        <b>City Incidents Feed</b>
+        <span>Browse live citizen alerts, time trends, and Puri pilot verification data</span>
+      </div>
+      <span class="hub-arrow">→</span>
+    </div>
+
+    <div class="more-hub-card" onclick="show('dash')">
+      <div class="hub-icon-box" style="background:#fef3c7;color:#d97706">📊</div>
+      <div class="hub-card-content">
+        <b>Authority Scorecard & Police Patrol</b>
+        <span>100m grid safety score, dark spot analysis & police patrol recommendations</span>
+      </div>
+      <span class="hub-arrow">→</span>
+    </div>
+
+    <div class="more-hub-card" onclick="show('pitch')">
+      <div class="hub-icon-box" style="background:#f3e8ff;color:#9333ea">📑</div>
+      <div class="hub-card-content">
+        <b>Slides 1 - 6 Pitch Deck</b>
+        <span>Complete project deck: problem statement, 4 pillars, architecture & NCRB data</span>
+      </div>
+      <span class="hub-arrow">→</span>
+    </div>
+
+    <div class="more-hub-card" onclick="show('report')">
+      <div class="hub-icon-box" style="background:#ffe4e6;color:#e11d48">📝</div>
+      <div class="hub-card-content">
+        <b>Municipal Grievance Report</b>
+        <span>Generate formal auto-drafted letters for streetlights & dark spots to authorities</span>
+      </div>
+      <span class="hub-arrow">→</span>
+    </div>
+
+    <div class="more-hub-card" onclick="show('set')">
+      <div class="hub-icon-box" style="background:#ecfdf5;color:#059669">⚙️</div>
+      <div class="hub-card-content">
+        <b>App Settings & Audio AI</b>
+        <span>Sensitivity sliders, Safe Home radius, emergency siren & PWA install</span>
+      </div>
+      <span class="hub-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;text-align:center;padding:16px;background:#fbfdff;border-radius:18px">
+    <b style="font-size:13px;color:var(--navy)">🌸 Awaaz Map — Pink Shield Edition</b>
+    <div style="font-size:11.5px;color:var(--mut);margin:4px 0 10px">Version 2.4.0 · 100% Offline Resilience · Zero 3rd-Party Trackers</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button class="b s o" onclick="openCalculator()">🔢 Stealth PIN</button>
+      <button class="b s o" onclick="openBlackScreen()">🕶️ Black Screen</button>
+      <button class="b s wa" onclick="triggerPwaInstall()">📲 Install App</button>
+    </div>
+  </div>
 </section>
 
 </main>
@@ -1894,37 +1985,45 @@ async function reverseGeocode(lat,lng){
   return best;
 }
 
-/* ---------- Navigation Tabs ---------- */
+/* ---------- Modern 5-Tab Floating Navigation ---------- */
 const TABS=[
-  ['home','🌸 Home'],
-  ['circle','💖 Circle'],
-  ['escort','🚶‍♀️ Escort'],
-  ['map','🗺️ Map'],
-  ['city','🏙️ Incidents'],
-  ['dash','📊 Dashboard'],
-  ['pitch','📑 Pitch'],
-  ['report','📝 Report'],
-  ['set','⚙️ Settings']
+  ['home', '🌸', 'Home'],
+  ['circle', '💖', 'Circle'],
+  ['map', '🗺️', 'Map'],
+  ['escort', '🚶‍♀️', 'Escort'],
+  ['more', '✨', 'More']
 ];
 
-TABS.forEach(([id,l],i)=>{
-  const b=document.createElement('button');
-  b.textContent=l;b.dataset.id=id;if(!i)b.className='on';
-  b.onclick=()=>show(id);
+TABS.forEach(([id, icon, label], i) => {
+  const b = document.createElement('button');
+  b.innerHTML = `<span class="nav-icon">${icon}</span><span class="nav-lbl">${label}</span>`;
+  b.dataset.id = id;
+  if (!i) b.className = 'on';
+  b.onclick = () => show(id);
   $('nav').appendChild(b);
 });
 
 function show(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.id==='t-'+id));
-  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
-  $('modeTag').textContent=id.toUpperCase();
-  if(id==='map')drawMap();
-  if(id==='city')renderCityIncidents();
-  if(id==='circle')refreshCt();
-  if(id==='dash')drawDash();
-  if(id==='home'){refreshCt();updateHomeUI();}
-  if(id==='escort'){updateBatteryUI();}
-  window.scrollTo(0,0);
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.id === 't-' + id));
+  
+  // Highlight appropriate nav button: if id is a secondary tab, highlight 'more'
+  const primaryTabs = ['home', 'circle', 'map', 'escort', 'more'];
+  const activeTabId = primaryTabs.includes(id) ? id : 'more';
+  
+  document.querySelectorAll('nav button').forEach(b => {
+    b.classList.toggle('on', b.dataset.id === activeTabId);
+  });
+
+  const modeTag = $('modeTag');
+  if(modeTag) modeTag.textContent = id.toUpperCase();
+
+  if(id === 'map') drawMap();
+  if(id === 'city') renderCityIncidents();
+  if(id === 'circle') refreshCt();
+  if(id === 'dash') drawDash();
+  if(id === 'home'){ refreshCt(); updateHomeUI(); }
+  if(id === 'escort'){ updateBatteryUI(); }
+  window.scrollTo(0, 0);
 }
 
 /* ---------- Map + Screams + Safe Home Perimeter ---------- */

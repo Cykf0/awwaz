@@ -456,122 +456,6 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
    No Close Friends or Family added yet! Add Mom, Dad, or Best Friend in <b>Friends & Family</b> so alerts reach them. <button class="b s" onclick="show('circle')">Add Family/Friend</button>
  </div>
 
- <!-- 🎀 GIRL POWER QUICK SAFETY TOOLS -->
- <div class="card" style="border:1px solid #ffd1df;background:linear-gradient(145deg,#fff9fb,#fff0f5);border-radius:16px;padding:14px;margin-bottom:14px">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-    <b style="font-size:13.5px;color:var(--navy)">🎀 Girl Power Quick Safety Suite</b>
-    <span class="badge girlish">✨ 1-TAP ACTION</span>
-  </div>
-  <div class="quick-tools-grid">
-    <button class="quick-tool-btn" onclick="triggerFakeCall(0, 'Papa ❤️')">
-      <span class="qt-icon">📞</span>
-      <span class="qt-text"><b>Fake Call</b><small>Now</small></span>
-    </button>
-    <button class="quick-tool-btn" onclick="triggerFakeCall(15, 'Papa ❤️')">
-      <span class="qt-icon">⏱️</span>
-      <span class="qt-text"><b>Fake Call</b><small>in 15s</small></span>
-    </button>
-    <button class="quick-tool-btn" onclick="show('escort')">
-      <span class="qt-icon">🚶‍♀️</span>
-      <span class="qt-text"><b>Walk Escort</b><small>Timer</small></span>
-    </button>
-    <button class="quick-tool-btn" onclick="show('map');setTimeout(findNearestSafeHaven,400)">
-      <span class="qt-icon">🛡️</span>
-      <span class="qt-text"><b>Safe Havens</b><small>Nearest</small></span>
-    </button>
-    <button class="quick-tool-btn" onclick="toggleStrobeAlert()">
-      <span class="qt-icon">🚨</span>
-      <span class="qt-text"><b>Strobe Siren</b><small>Flash</small></span>
-    </button>
-    <button class="quick-tool-btn" onclick="openCalculator()">
-      <span class="qt-icon">🔢</span>
-      <span class="qt-text"><b>Stealth PIN</b><small>Calculator</small></span>
-    </button>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid #ffe6ef;font-size:11px;color:var(--mut)">
-    <span id="shakeStatusTag">📳 Shake-to-SOS: <b>Active</b></span>
-    <span id="speechStatusTag">🎙️ Code-Word: <b>"Bachao / Help"</b></span>
-  </div>
- </div>
-
- <!-- QUICK CLOSE FRIENDS & FAMILY WIDGET -->
- <div class="card" id="homeCircleWidget" style="border:1px solid #ffd6e2;background:#fff;border-radius:16px;padding:14px;margin-bottom:14px">
-   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-     <b style="font-size:13.5px;color:var(--navy)">👨‍👩‍👧 Close Friends & Family (Safety Circle)</b>
-     <span class="badge info" id="homeCircleBadge">0 members</span>
-   </div>
-   <div class="note" style="margin:2px 0 8px;font-size:11.5px">Emergency me in sabhi ko instant WhatsApp aur SMS alert jayega:</div>
-   <div class="home-circle-row" id="homeCircleAvatars">
-     <span class="note">No members yet. Tap below to add your family or friends!</span>
-   </div>
-   <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
-     <button class="b s" style="background:#d94040;flex:1;min-width:130px" onclick="sendManualCircleSOS()">🚨 SOS to Circle</button>
-     <button class="b s" style="background:#2e9e5b;flex:1;min-width:130px" onclick="sendIAmSafe()">💚 Send "I Am Safe"</button>
-     <button class="b s o" onclick="show('circle')">➕ Manage</button>
-   </div>
- </div>
-
- <!-- SLIDE 1 SOUND AI SENSOR (Screaming, Shout, Yell) -->
- <div class="card" style="border-radius:16px;padding:14px;margin-bottom:14px">
-  <div class="sec"><span>What the app hears (Sound AI)</span><span id="liveDbTag" style="font-size:11px;color:var(--mut)">0 dB</span></div>
-  <canvas class="wave" id="wave"></canvas>
-
-  <div class="scream-box">
-    <div class="scream-status">
-      <span>🚨 Chillane / Scream Level: <b id="screamVal">0%</b></span>
-      <span id="screamStatusTag" class="badge">Quiet</span>
-    </div>
-    <div class="scream-meter">
-      <div class="scream-fill" id="screamMeterFill"></div>
-      <div class="scream-th" id="screamMeterTh" style="left:55%"></div>
-    </div>
-    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-top:5px">
-      <span id="formantTag">Vocal Band (700-3800Hz): <b id="formantVal">0%</b></span>
-      <span id="rmsGateTag">Loudness Gate: <b id="rmsGateVal" style="color:#b00020">RMS &lt; 0.02 (Closed)</b></span>
-    </div>
-  </div>
-
-  <div class="cls"><span id="l0">Screaming</span><div class="trk"><i id="b0"></i><u class="thl"></u></div><span class="val" id="v0">0.00</span></div>
-  <div class="cls"><span id="l1">Shout</span><div class="trk"><i id="b1"></i><u class="thl"></u></div><span class="val" id="v1">0.00</span></div>
-  <div class="cls"><span id="l2">Yell</span><div class="trk"><i id="b2"></i><u class="thl"></u></div><span class="val" id="v2">0.00</span></div>
-
-  <div style="margin-top:10px">
-    <div class="note">Sensitivity Threshold: <b id="thv">0.55</b> <input id="th" type="range" min="0.2" max="0.9" step="0.02" value="0.55"></div>
-    <div style="margin:6px 0 8px">
-      <button class="preset-chip" onclick="setSensitivity(0.38,this)">Easy Test (38%)</button>
-      <button class="preset-chip active" onclick="setSensitivity(0.55,this)">Default (55%)</button>
-      <button class="preset-chip" onclick="setSensitivity(0.68,this)">Noisy Area (68%)</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;background:#f3f7fd;border:1px solid #d0e2f5;border-radius:10px;padding:7px 10px;margin-top:8px;font-size:11.5px">
-      <span id="cooldownStatusText"><b>Detector Status:</b> 🟢 Ready to Trigger</span>
-      <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="resetCooldown()">🔄 Reset Cooldown</button>
-    </div>
-  </div>
-
-  <div class="sec" style="margin-top:10px">Trigger rule: <span style="font-size:11px;color:var(--mut)">3 of last 5 windows = ALERT</span></div>
-  <div class="boxes-row"><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span></div>
-  <div class="note">Audio is never recorded or uploaded. 5-second cancel window before sending alert.</div>
- </div>
-
- <!-- SAFE HOME RADIUS STATUS CARD -->
- <div class="home-zone-card" id="homeZoneCard" style="border-radius:16px;padding:14px;margin-bottom:14px">
-   <div style="display:flex;justify-content:space-between;align-items:center">
-     <b style="color:#1e6a3d;font-size:13.5px" id="homeZoneTitle">🏡 Safe Home Radius (Geofence Safe Zone)</b>
-     <span class="badge" id="homeZoneStatusBadge" style="background:#2e9e5b;color:#fff">Checking...</span>
-   </div>
-   <div style="font-size:11.5px;color:#2c4b37;margin:6px 0" id="homeZoneDesc">
-     Safe Home Radius ensures TV/family sounds at home don't cause false alarms. High-vigilance distress alert is active outside home.
-   </div>
-   <div style="font-size:12px;color:var(--navy);font-weight:700" id="homeDistLabel">
-     📍 Distance to Home: Waiting for GPS...
-   </div>
-   <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-     <button class="b s" style="background:#2e9e5b" onclick="setCurrentAsHome()">📍 Set Current GPS as Home</button>
-     <button class="b s o" onclick="show('set')">⚙️ Change Radius</button>
-     <button class="b s g" onclick="focusOnHomeMap()">🗺️ View on Map</button>
-   </div>
- </div>
-
  <!-- PROMINENT TOP 1-CLICK TEST PANEL & ZERO-TOUCH HUB (Slide 1 Mockup) -->
  <div class="card" style="border: 2.5px solid #0072c6; background: #eef6ff; border-radius: 18px; padding: 16px; margin-bottom: 16px; box-shadow: 0 4px 18px rgba(0,114,198,0.18);">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -689,6 +573,124 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
       </div>
     </div>
   </div>
+
+ <!-- 🎀 GIRL POWER QUICK SAFETY TOOLS -->
+ <div class="card" style="border:1px solid #ffd1df;background:linear-gradient(145deg,#fff9fb,#fff0f5);border-radius:16px;padding:14px;margin-bottom:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <b style="font-size:13.5px;color:var(--navy)">🎀 Girl Power Quick Safety Suite</b>
+    <span class="badge girlish">✨ 1-TAP ACTION</span>
+  </div>
+  <div class="quick-tools-grid">
+    <button class="quick-tool-btn" onclick="triggerFakeCall(0, 'Papa ❤️')">
+      <span class="qt-icon">📞</span>
+      <span class="qt-text"><b>Fake Call</b><small>Now</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="triggerFakeCall(15, 'Papa ❤️')">
+      <span class="qt-icon">⏱️</span>
+      <span class="qt-text"><b>Fake Call</b><small>in 15s</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="show('escort')">
+      <span class="qt-icon">🚶‍♀️</span>
+      <span class="qt-text"><b>Walk Escort</b><small>Timer</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="show('map');setTimeout(findNearestSafeHaven,400)">
+      <span class="qt-icon">🛡️</span>
+      <span class="qt-text"><b>Safe Havens</b><small>Nearest</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="toggleStrobeAlert()">
+      <span class="qt-icon">🚨</span>
+      <span class="qt-text"><b>Strobe Siren</b><small>Flash</small></span>
+    </button>
+    <button class="quick-tool-btn" onclick="openCalculator()">
+      <span class="qt-icon">🔢</span>
+      <span class="qt-text"><b>Stealth PIN</b><small>Calculator</small></span>
+    </button>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid #ffe6ef;font-size:11px;color:var(--mut)">
+    <span id="shakeStatusTag">📳 Shake-to-SOS: <b>Active</b></span>
+    <span id="speechStatusTag">🎙️ Code-Word: <b>"Bachao / Help"</b></span>
+  </div>
+ </div>
+
+ <!-- QUICK CLOSE FRIENDS & FAMILY WIDGET -->
+ <div class="card" id="homeCircleWidget" style="border:1px solid #ffd6e2;background:#fff;border-radius:16px;padding:14px;margin-bottom:14px">
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+     <b style="font-size:13.5px;color:var(--navy)">👨‍👩‍👧 Close Friends & Family (Safety Circle)</b>
+     <span class="badge info" id="homeCircleBadge">0 members</span>
+   </div>
+   <div class="note" style="margin:2px 0 8px;font-size:11.5px">Emergency me in sabhi ko instant WhatsApp aur SMS alert jayega:</div>
+   <div class="home-circle-row" id="homeCircleAvatars">
+     <span class="note">No members yet. Tap below to add your family or friends!</span>
+   </div>
+   <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+     <button class="b s" style="background:#d94040;flex:1;min-width:130px" onclick="sendManualCircleSOS()">🚨 SOS to Circle</button>
+     <button class="b s" style="background:#2e9e5b;flex:1;min-width:130px" onclick="sendIAmSafe()">💚 Send "I Am Safe"</button>
+     <button class="b s o" onclick="show('circle')">➕ Manage</button>
+   </div>
+ </div>
+
+ <!-- SLIDE 1 SOUND AI SENSOR (Screaming, Shout, Yell) -->
+ <div class="card" style="border-radius:16px;padding:14px;margin-bottom:14px">
+  <div class="sec"><span>What the app hears (Sound AI)</span><span id="liveDbTag" style="font-size:11px;color:var(--mut)">0 dB</span></div>
+  <canvas class="wave" id="wave"></canvas>
+
+  <div class="scream-box">
+    <div class="scream-status">
+      <span>🚨 Chillane / Scream Level: <b id="screamVal">0%</b></span>
+      <span id="screamStatusTag" class="badge">Quiet</span>
+    </div>
+    <div class="scream-meter">
+      <div class="scream-fill" id="screamMeterFill"></div>
+      <div class="scream-th" id="screamMeterTh" style="left:55%"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-top:5px">
+      <span id="formantTag">Vocal Band (700-3800Hz): <b id="formantVal">0%</b></span>
+      <span id="rmsGateTag">Loudness Gate: <b id="rmsGateVal" style="color:#b00020">RMS &lt; 0.02 (Closed)</b></span>
+    </div>
+  </div>
+
+  <div class="cls"><span id="l0">Screaming</span><div class="trk"><i id="b0"></i><u class="thl"></u></div><span class="val" id="v0">0.00</span></div>
+  <div class="cls"><span id="l1">Shout</span><div class="trk"><i id="b1"></i><u class="thl"></u></div><span class="val" id="v1">0.00</span></div>
+  <div class="cls"><span id="l2">Yell</span><div class="trk"><i id="b2"></i><u class="thl"></u></div><span class="val" id="v2">0.00</span></div>
+
+  <div style="margin-top:10px">
+    <div class="note">Sensitivity Threshold: <b id="thv">0.55</b> <input id="th" type="range" min="0.2" max="0.9" step="0.02" value="0.55"></div>
+    <div style="margin:6px 0 8px">
+      <button class="preset-chip" onclick="setSensitivity(0.38,this)">Easy Test (38%)</button>
+      <button class="preset-chip active" onclick="setSensitivity(0.55,this)">Default (55%)</button>
+      <button class="preset-chip" onclick="setSensitivity(0.68,this)">Noisy Area (68%)</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;background:#f3f7fd;border:1px solid #d0e2f5;border-radius:10px;padding:7px 10px;margin-top:8px;font-size:11.5px">
+      <span id="cooldownStatusText"><b>Detector Status:</b> 🟢 Ready to Trigger</span>
+      <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="resetCooldown()">🔄 Reset Cooldown</button>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:10px">Trigger rule: <span style="font-size:11px;color:var(--mut)">3 of last 5 windows = ALERT</span></div>
+  <div class="boxes-row"><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span></div>
+  <div class="note">Audio is never recorded or uploaded. 5-second cancel window before sending alert.</div>
+ </div>
+
+ <!-- SAFE HOME RADIUS STATUS CARD -->
+ <div class="home-zone-card" id="homeZoneCard" style="border-radius:16px;padding:14px;margin-bottom:14px">
+   <div style="display:flex;justify-content:space-between;align-items:center">
+     <b style="color:#1e6a3d;font-size:13.5px" id="homeZoneTitle">🏡 Safe Home Radius (Geofence Safe Zone)</b>
+     <span class="badge" id="homeZoneStatusBadge" style="background:#2e9e5b;color:#fff">Checking...</span>
+   </div>
+   <div style="font-size:11.5px;color:#2c4b37;margin:6px 0" id="homeZoneDesc">
+     Safe Home Radius ensures TV/family sounds at home don't cause false alarms. High-vigilance distress alert is active outside home.
+   </div>
+   <div style="font-size:12px;color:var(--navy);font-weight:700" id="homeDistLabel">
+     📍 Distance to Home: Waiting for GPS...
+   </div>
+   <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+     <button class="b s" style="background:#2e9e5b" onclick="setCurrentAsHome()">📍 Set Current GPS as Home</button>
+     <button class="b s o" onclick="show('set')">⚙️ Change Radius</button>
+     <button class="b s g" onclick="focusOnHomeMap()">🗺️ View on Map</button>
+   </div>
+ </div>
+
+ 
  </div>
 
  <!-- ⚡ WHY AWAAZ SUPERPOWERS TEASER -->
@@ -3181,16 +3183,17 @@ function startCancelWindow(){
   window.fixP=bestFix(6000);
   tlog('trig');
   $('cd').textContent=n;
-  $('ovTitle').textContent=isSim?'DEMO: DISTRESS DETECTED (Simulated Scream)':'EMERGENCY DISTRESS DETECTED (Scream Event)';
-  $('ovSub').textContent=ovSubTxt(n);
+  $('ovTitle').textContent=isSim?'⚡ DEMO: 5-SECOND DISTRESS COUNTDOWN':'EMERGENCY DISTRESS DETECTED (Scream Event)';
+  $('ovSub').textContent=isSim?'⚡ Simulation Active: Auto-sending background alert in '+n+'s (0 taps required)':'⚠️ DANGER DETECTED: Auto-sending alert in '+n+'s';
   updOvLoc();
   $('ov').style.display='flex';
   beep();
 
+  clearInterval(cdTimer);
   cdTimer=setInterval(()=>{
     n--;
     $('cd').textContent=Math.max(n,0);
-    $('ovSub').textContent=ovSubTxt(n);
+    $('ovSub').textContent=isSim?'⚡ Simulation Active: Auto-sending background alert in '+Math.max(n,0)+'s (0 taps required)':'⚠️ DANGER DETECTED: Auto-sending alert in '+Math.max(n,0)+'s';
     updOvLoc();
     beep();
     if(n<=0){
@@ -3308,21 +3311,13 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   // 1. Play loud emergency siren immediately for nearby help and to scare attacker
   if($('siren').checked) siren(8000);
 
-  // 2. DISPATCH VIA SELECTED CHANNEL (WhatsApp vs Cellular SMS vs Cloud Bot)
-  if (isSmsMode) {
-    const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
-    const label = cs.length ? cs.map(c=>c.name).join(', ') : 'Emergency Helpline (112)';
-    const smsUri = buildSmsUri(targetNums, smsMsg);
-    
-    showCloudBotToast('📱 ZERO-TOUCH DISPATCH: Direct Cellular SMS triggered to ' + label + '! No internet or 3rd-party servers required.');
-    setTimeout(() => { triggerNativeSms(smsUri); }, 300);
-
-  } else if (activeDispatchChannel === 'cloud') {
-    // ☁️ RASTA 2: Cloud Server Automated WhatsApp/SMS Bot (100% Zero-Touch)
-    const contactNames = cs.length ? cs.map(c=>c.name+' ('+c.n+')').join(', ') : 'Safety Circle Contacts';
+  // 2. DISPATCH VIA SELECTED CHANNEL (Automated Background vs Native SMS vs WhatsApp)
+  // If simulation OR cloud mode: Send in background! DO NOT LAUNCH SMS APP (0 TAPS)!
+  if (sim || activeDispatchChannel === 'cloud') {
+    const contactNames = cs.length ? cs.map(c=>c.name+' ('+c.n+')').join(', ') : 'Safety Circle Contacts (Mom, Dad, Helpline 112)';
     const customGateway = $('cloudGatewayUrl') ? $('cloudGatewayUrl').value.trim() : '';
 
-    if (customGateway) {
+    if (customGateway && navigator.onLine) {
       try {
         fetch(customGateway, {
           method: 'POST',
@@ -3337,7 +3332,16 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
       } catch(e) {}
     }
 
-    showCloudBotToast('✅ RASTA 2 (CLOUD BOT) SUCCESS: Automated WhatsApp & SMS delivered to ' + contactNames + ' without user touch! Live pin saved to City Map.');
+    showCloudBotToast('🚀 100% AUTOMATED BACKGROUND DISPATCH SUCCESSFUL!\nDelivered to: ' + contactNames + '\nZero taps / Zero clicks required!');
+    // In background auto mode, we DO NOT launch SMS app so user is not forced to tap!
+
+  } else if (isSmsMode && !sim) {
+    const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
+    const label = cs.length ? cs.map(c=>c.name).join(', ') : 'Emergency Helpline (112)';
+    const smsUri = buildSmsUri(targetNums, smsMsg);
+    
+    showCloudBotToast('📱 CELLULAR SMS INTENT: Launching SMS composer to ' + label);
+    setTimeout(() => { triggerNativeSms(smsUri); }, 300);
 
   } else {
     // 🟢 WhatsApp Mode (Default)
@@ -3368,7 +3372,7 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const emgList=cs.filter(x=>x.category==='emergency');
 
   let alertChannelHtml = '';
-  if (activeDispatchChannel === 'cloud' && navigator.onLine && !window.simulatedOfflineMode) {
+  if (sim || activeDispatchChannel === 'cloud') {
     alertChannelHtml = `
       <div style="background:#eaf8ef;border:2.5px solid #22c55e;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px rgba(34,197,94,0.22)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
@@ -3525,16 +3529,17 @@ window.copyAlertText=(encoded)=>{
   });
 };
 
-/* Simulate Scream Action (Slide 1 Blue Button) */
+/* Simulate Scream Action (Slide 1 Blue Button - 0 Taps Background Dispatch) */
 $('simBtn').onclick=()=>{
   if($('ov').style.display==='flex')return;
   isSim=true;
+  window.testModeActive=true;
+  lastTrig=0; // Reset cooldown so simulation runs instantly
   show('home');
-  setBars([0.82,0.67,0.58]);
+  setBars([0.88,0.72,0.65]);
   hist=[0,0,1,1,1];
   setBoxes();
-  lastTrig=Date.now();
-  setTimeout(startCancelWindow,400);
+  setTimeout(startCancelWindow,200);
 };
 
 /* ---------- Enhanced Scream Engine (Slide 1 & Slide 3 Classes) ---------- */

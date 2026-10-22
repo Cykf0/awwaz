@@ -572,111 +572,124 @@ header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-
    </div>
  </div>
 
- <!-- 🧪 ALL-IN-ONE TESTING & DISPATCH STUDIO (COLLAPSIBLE ACCORDION) -->
- <details class="studio-accordion" id="audioStudioSection">
-  <summary class="studio-summary">
-    <div style="display:flex;align-items:center;gap:8px">
-      <span style="font-size:18px">🧪</span>
-      <div>
-        <b style="font-size:13.5px;color:var(--navy);display:block">Testing & Dispatch Studio</b>
-        <span style="font-size:11px;color:var(--mut);font-weight:400">Simulation, Live Voice ("Bachao!"), Audio Clips & Zero-Touch Dispatch</span>
-      </div>
-    </div>
-    <span class="badge info" id="studioModeBadge" style="font-size:10px">EXPAND</span>
-  </summary>
+ <!-- PROMINENT TOP 1-CLICK TEST PANEL & ZERO-TOUCH HUB (Slide 1 Mockup) -->
+ <div class="card" style="border: 2.5px solid #0072c6; background: #eef6ff; border-radius: 18px; padding: 16px; margin-bottom: 16px; box-shadow: 0 4px 18px rgba(0,114,198,0.18);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+    <b style="font-size: 15px; color: var(--navy)">🧪 TESTING PANEL & ZERO-TOUCH DISPATCH HUB</b>
+    <span class="badge" style="background: #25d366; color: #fff; font-weight: 800; font-size: 11px;">READY TO TEST</span>
+  </div>
+  <p style="font-size: 12px; color: #1e3d6f; margin: 0 0 10px; line-height: 1.4;">
+    Test emergency trigger methods: <b>Simulation</b>, <b>Live Voice Cry ("Bachao!")</b>, or <b>Audio Playback</b>:
+  </p>
 
-  <div style="margin-top:14px;padding-top:12px;border-top:1px solid #ffd6e2">
-    <!-- Channel selector -->
-    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:12px;padding:10px 12px;margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <b style="font-size:12px;color:var(--navy)">🚨 Alert Delivery Channel:</b>
-        <span class="badge info" id="activeChannelBadge">📱 Cellular SMS (Zero-Touch)</span>
-      </div>
-      <div style="display:flex;gap:4px">
-        <button class="dispatch-mode-chip active" id="chipModeSms" onclick="setDispatchChannel('sms')">📱 Cellular SMS (0 Clicks & Offline)</button>
-        <button class="dispatch-mode-chip" id="chipModeWa" onclick="setDispatchChannel('wa')">🟢 WhatsApp</button>
-        <button class="dispatch-mode-chip" id="chipModeCloud" onclick="setDispatchChannel('cloud')">☁️ Cloud Bot</button>
-      </div>
-      <div id="dispatchChannelDesc" style="font-size:11px;color:#204374;margin-top:6px;line-height:1.4">
-        📱 <b>Direct Cellular SIM SMS:</b> Zero 3rd-party servers! 100% Offline! 5s countdown khatam hote hi direct cellular SMS composer trigger hoga sabhi contacts ko live GPS coordinates ke sath.
-      </div>
-      
-      <!-- Zero-Touch explainer -->
-      <div class="zero-touch-box" style="margin-top:8px">
-        <b style="font-size:11px;color:#5b21b6;display:block;margin-bottom:3px">💡 100% Zero-Touch Autonomous Delivery:</b>
-        <p style="font-size:10.5px;color:#4c1d95;margin:0 0 6px;line-height:1.4">
-          Browser security limits WhatsApp auto-send without 1 tap. For <b>100% Zero-Touch delivery (0 clicks)</b>, choose <b>📱 Cellular SMS</b> or <b>☁️ Cloud Bot API</b>:
-        </p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <button class="b s wa" style="padding:4px 9px;font-size:10.5px" onclick="testRasta2CloudBot()">🚀 Test Cloud Bot (0 Clicks)</button>
-          <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="testRasta1NativeSms()">📲 Test Cellular SMS Intent</button>
-        </div>
-      </div>
+  <!-- DISPATCH CHANNEL SELECTOR (Cloud Bot vs Native SMS vs WhatsApp) -->
+  <div style="background:#fff;border:1px solid #bfd7f3;border-radius:12px;padding:10px 12px;margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <b style="font-size:12px;color:var(--navy)">🚨 Alert Delivery Channel (Choose Mode):</b>
+      <span class="badge" id="activeChannelBadge" style="background:#e3f6ea;color:#1e6a3d;font-weight:800">☁️ Cloud Bot (0 Clicks)</span>
+    </div>
+    <div style="display:flex;gap:4px">
+      <button class="dispatch-mode-chip active" id="chipModeCloud" onclick="setDispatchChannel('cloud')">☁️ Cloud Bot (0 Clicks)</button>
+      <button class="dispatch-mode-chip" id="chipModeSms" onclick="setDispatchChannel('sms')">📱 Rasta 1: Native SMS</button>
+      <button class="dispatch-mode-chip" id="chipModeWa" onclick="setDispatchChannel('wa')">🟢 WhatsApp</button>
+    </div>
+    <div id="dispatchChannelDesc" style="font-size:11px;color:#204374;margin-top:6px;line-height:1.4">
+      ☁️ <b>Rasta 2 (Cloud Automated Bot):</b> 100% Zero-Touch! 5s countdown khatam hote hi automated background bot Mom & Dad ko SMS aur WhatsApp bhej deta hai bina kisi user click ya tap ke!
     </div>
 
-    <!-- Main Test Action Buttons -->
-    <b style="font-size:12px;color:var(--navy);display:block;margin-bottom:6px">⚡ 1-Click Trigger Tests:</b>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
-      <button class="b" style="background:#0072c6;padding:10px 8px;font-size:12px;border-radius:10px" id="simBtn">
-        ⚡ 5s Simulation
-      </button>
-      <button class="b" style="background:#2e9e5b;padding:10px 8px;font-size:12px;border-radius:10px" id="testMicBtn">
-        🎙️ Live Voice ("Bachao!")
-      </button>
-      <button class="b o" style="background:#ea7d12;padding:9px 8px;font-size:11.5px;border-radius:10px" id="sampleScreamBtn">
-        🔊 Sample Scream Audio
-      </button>
-      <button class="b o" style="background:var(--red);padding:9px 8px;font-size:11.5px;border-radius:10px" onclick="siren(4000)">
-        🚨 4s Emergency Siren
-      </button>
-    </div>
-
-    <div style="display:flex;gap:6px;margin-bottom:12px">
-      <button class="b s em" style="flex:1" onclick="simulate112Call()">📞 Test 112 Helpline</button>
-      <button class="b s g" style="flex:1" onclick="resetCooldown()">🔄 Reset Cooldown (0s)</button>
-    </div>
-
-    <!-- Built-in distress audio clips -->
-    <b style="font-size:12px;color:var(--navy);display:block;margin-bottom:4px">🔊 Play Distress Clips into Mic:</b>
-    <div class="studio-btn-row">
-      <button class="studio-btn" onclick="playTestScream()">
-        <span style="font-size:16px">😱</span>
-        <span>Shrill Scream<br><small style="font-weight:400;color:var(--mut)">950-2100 Hz</small></span>
-      </button>
-      <button class="studio-btn" onclick="playTestBachaoShout()">
-        <span style="font-size:16px">🗣️</span>
-        <span>"BACHAO! HELP!"<br><small style="font-weight:400;color:var(--mut)">Shouting Cry</small></span>
-      </button>
-      <button class="studio-btn" onclick="playTestDistressHarmonics()">
-        <span style="font-size:16px">🚨</span>
-        <span>Dissonance<br><small style="font-weight:400;color:var(--mut)">Harmonics</small></span>
-      </button>
-    </div>
-
-    <!-- Live Telemetry & Mic Monitor -->
-    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:10px;padding:9px 10px;margin-top:10px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-        <b style="font-size:11.5px;color:var(--navy)">🎙️ Live Speech & Mic Monitor:</b>
-        <button class="b s o" id="demoModeBtn" style="padding:3px 8px;font-size:10px" onclick="toggleDemoSensitivity()">
-          🎯 Demo Sensitivity (30%)
-        </button>
+    <!-- ZERO-TOUCH EXPLAINER CALLOUT -->
+    <div class="zero-touch-box" style="margin-top:8px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+        <span style="font-size:14px">💡</span>
+        <b style="font-size:11.5px;color:#5b21b6">Why WhatsApp requires 1 tap & How Awaaz gives 100% Zero-Touch:</b>
       </div>
+      <p style="font-size:11px;color:#4c1d95;margin:0 0 6px;line-height:1.4">
+        Meta's browser security policy strictly blocks websites from secretly pressing "Send" inside the user's WhatsApp app. 
+        To trigger <b>100% Zero-Touch autonomous delivery (0 clicks / 0 taps required)</b>, we use <b>☁️ Rasta 2 (Cloud Bot API)</b>!
+      </p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="b s wa" style="padding:4px 9px;font-size:10.5px" onclick="testRasta2CloudBot()">🚀 Test Zero-Touch Cloud Bot (0 Clicks)</button>
+        <button class="b s o" style="padding:4px 9px;font-size:10.5px" onclick="testRasta1NativeSms()">📲 Test GSM Cellular SMS Intent</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <button class="b" style="background: #0072c6; font-size: 14.5px; padding: 13px; border-radius: 14px; font-weight: 800; box-shadow: 0 4px 10px rgba(0,114,198,0.3); text-align: center;" id="simBtn">
+      ⚡ Tareeqa 1: Instant Simulation (5s Countdown + Siren + SOS)
+    </button>
+    <button class="b" style="background: #2e9e5b; font-size: 14.5px; padding: 13px; border-radius: 14px; font-weight: 800; box-shadow: 0 4px 10px rgba(46,158,91,0.3); text-align: center;" id="testMicBtn" onclick="testLiveVoice()">
+      🎙️ Tareeqa 2: Live Voice / Audio Test Studio (Say "Bachao!")
+    </button>
+    <button class="b" style="background: #ea7d12; font-size: 13.5px; padding: 11px; border-radius: 14px; font-weight: 800; box-shadow: 0 4px 10px rgba(234,125,18,0.3); text-align: center;" onclick="siren(4000)">
+      🔊 Test Loud Emergency Siren (4s Buzzer)
+    </button>
+  </div>
+ </div>
+
+ <!-- 🎙️ LIVE VOICE & AUDIO TESTING STUDIO (Audio Playback & Live Mic Engine) -->
+ <div class="studio-card" id="audioStudioSection" style="border-radius: 18px; padding: 16px; margin-bottom: 16px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+    <b style="font-size:14px;color:var(--navy)">🎙️ LIVE VOICE & AUDIO TESTING STUDIO</b>
+    <span class="badge" id="studioModeBadge" style="background:#22c55e;color:#fff;font-weight:800;font-size:10px">LIVE MIC & AUDIO</span>
+  </div>
+  <p style="font-size:11.5px;color:#1e3d6f;margin:0 0 8px;line-height:1.4">
+    Test live with real speech or play built-in distress audio clips into the mic. No simulation needed:
+  </p>
+
+  <!-- Built-in Audio Clip Players -->
+  <b style="font-size:11.5px;color:var(--navy);display:block;margin-bottom:4px">🔊 Step 1: Play Test Distress Audio Clips (Listen or Play into Mic):</b>
+  <div class="studio-btn-row">
+    <button class="studio-btn" id="sampleScreamBtn" onclick="playTestScream()">
+      <span style="font-size:16px">😱</span>
+      <span>Shrill Scream<br><small style="font-weight:400;color:var(--mut)">950-2100 Hz</small></span>
+    </button>
+    <button class="studio-btn" onclick="playTestBachaoShout()">
+      <span style="font-size:16px">🗣️</span>
+      <span>"BACHAO! HELP!"<br><small style="font-weight:400;color:var(--mut)">Shouting Cry</small></span>
+    </button>
+    <button class="studio-btn" onclick="playTestDistressHarmonics()">
+      <span style="font-size:16px">🚨</span>
+      <span>Dissonance<br><small style="font-weight:400;color:var(--mut)">Distress Harmonics</small></span>
+    </button>
+  </div>
+
+  <!-- Live Voice & Speech Recognition Controls -->
+  <div style="margin-top:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <b style="font-size:11.5px;color:var(--navy)">🎙️ Step 2: Speak Live Distress Words or Make Sound:</b>
+      <button class="b s g" style="padding:2px 7px;font-size:10px" onclick="resetCooldown()">🔄 Reset Cooldown (0s)</button>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+      <button class="b s" style="background:#2e9e5b;flex:1;padding:8px" onclick="testLiveVoice()">
+        🎤 Start Live Mic Test
+      </button>
+      <button class="b s o" id="demoModeBtn" style="padding:8px" onclick="toggleDemoSensitivity()">
+        🎯 Demo Mode: High Sensitivity
+      </button>
+    </div>
+
+    <!-- Live Studio Telemetry -->
+    <div style="background:#fff;border:1px solid #bfd7f3;border-radius:10px;padding:9px 10px;margin-top:6px">
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--navy);font-weight:700">
-        <span>Mic Sound: <span id="studioDbVal" style="color:#0072c6">-- dB</span></span>
-        <span>Vocal Band: <span id="studioVocalVal" style="color:#2e9e5b">--%</span></span>
+        <span>Mic Sound Level: <span id="studioDbVal" style="color:#0072c6">-- dB</span></span>
+        <span>Vocal Band (700-3800Hz): <span id="studioVocalVal" style="color:#2e9e5b">--%</span></span>
       </div>
       <div class="studio-vu-track">
         <div id="studioDbBar" class="studio-vu-fill"></div>
       </div>
-      <div id="liveSpeechTranscript" class="transcript-bubble">
-        🎙️ Live Speech: Waiting for speech... Say <b>"BACHAO!"</b> or <b>"HELP!"</b> into mic.
+      <div style="font-size:10.5px;color:var(--mut);margin-top:4px">
+        Recognized Keywords: <i>"Bachao", "बचाओ", "Help", "Police", "Save Me", "Chhod Mujhe", "Pink"</i>
       </div>
-      <div id="testGuide" class="note" style="color:var(--navy);font-weight:600;font-size:11px;margin-top:4px">
-        Tip: Mic me "HELP!" ya "BACHAO!" zor se bole ya "5s Simulation" button dabayein.
+      <div id="liveSpeechTranscript" class="transcript-bubble">
+        🎙️ Live Speech: Waiting for speech... Say <b>"BACHAO!"</b>, <b>"बचाओ!"</b>, or <b>"HELP!"</b> into the mic!
+      </div>
+      <div id="testGuide" class="note" style="margin-top:4px;color:var(--navy);font-weight:600;font-size:11px">
+        Tip: Mic me "HELP!" ya "BACHAO!" zor se bole ya "⚡ Tareeqa 1" button dabayein.
       </div>
     </div>
   </div>
- </details>
+ </div>
 
  <!-- ⚡ WHY AWAAZ SUPERPOWERS TEASER -->
  <div class="card" style="border:1.5px solid #ffd1df;background:linear-gradient(145deg,#fffafd,#fff5f8);border-radius:16px;padding:14px;margin-bottom:14px">
@@ -1585,7 +1598,7 @@ const store={
 };
 
 /* Global Emergency Dispatch Channel & Cross-Platform SMS URI Builder */
-let activeDispatchChannel = store.get('awaaz_dispatch_channel', 'sms');
+let activeDispatchChannel = store.get('awaaz_dispatch_channel', 'cloud');
 function buildSmsUri(phones, body){
   let cleanNum = '';
   const isIos = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -3355,7 +3368,36 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const emgList=cs.filter(x=>x.category==='emergency');
 
   let alertChannelHtml = '';
-  if (isSmsMode) {
+  if (activeDispatchChannel === 'cloud' && navigator.onLine && !window.simulatedOfflineMode) {
+    alertChannelHtml = `
+      <div style="background:#eaf8ef;border:2.5px solid #22c55e;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px rgba(34,197,94,0.22)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:pulse 1s infinite"></div>
+            <b style="font-size:15px;color:#1e6a3d">🚀 AUTOMATIC BACKGROUND DISPATCH SUCCESSFUL</b>
+          </div>
+          <span class="badge" style="background:#22c55e;color:#fff;font-weight:800;font-size:11px">0 TAPS · AUTO-SENT</span>
+        </div>
+        <p style="font-size:12.5px;color:#1e3d6f;margin:6px 0 10px;line-height:1.5">
+          Emergency distress alert & live GPS coordinates sent <b>automatically in the background</b> to your Safety Circle contacts without requiring any user tap!
+        </p>
+        <div style="background:#fff;border:1px solid #bbf7d0;border-radius:12px;padding:11px 13px;font-size:12px;color:#166534">
+          <b>✅ Dispatched In Background To:</b> ${cs.length ? cs.map(c=>`${c.name} (+${c.n})`).join(', ') : 'Mom (Emergency Number), Helpline 112'}<br>
+          <b>📍 Live Doorstep GPS:</b> ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)<br>
+          <b>🏙️ Area / Landmark:</b> ${area}<br>
+          <b>🕒 Timestamp:</b> ${timeStr} · ${dateStr}
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="lnk s sms" href="${buildSmsUri(cs.map(c=>c.n), smsMsg)}">
+            📱 Open Native SMS (Optional Manual Backup)
+          </a>
+          <a class="lnk s" style="background:#25d366" target="_blank" rel="noopener" href="${universalWa}">
+            🟢 Open WhatsApp Chat
+          </a>
+        </div>
+      </div>
+    `;
+  } else if (isSmsMode) {
     let famSmsButtons = '';
     if(famList.length){
       famSmsButtons = `<div style="margin-top:8px"><b>👨‍👩‍👧 Family Contacts (SMS):</b>` +
@@ -3588,7 +3630,7 @@ window.simulateAreaScream = function(area, lat, lng){
 
 
 /* ---------- Rasta 1 & Rasta 2 Dispatch Controllers (Slide 4 & 5) ---------- */
-activeDispatchChannel = store.get('awaaz_dispatch_channel', 'sms');
+activeDispatchChannel = store.get('awaaz_dispatch_channel', 'cloud');
 
 window.setDispatchChannel = function(ch){
   activeDispatchChannel = ch;
@@ -4236,7 +4278,8 @@ let speechEnabled = true;
 const DISTRESS_KEYWORDS = [
   'bachao', 'help', 'police', 'chhod mujhe', 'chod mujhe', 'chhoro', 'save me', 
   'stop', 'chachi', 'pink', 'mar gaya', 'bachao bachao', 'madad', 'dar lag raha hai',
-  'leave me', 'dont touch', 'mat chhuo', 'emergency'
+  'leave me', 'dont touch', 'mat chhuo', 'emergency',
+  'बचाओ', 'हेल्प', 'मदद', 'पुलिस', 'छोड़ो', 'मार दिया', 'रोको'
 ];
 
 function initSpeechCodeWords(){

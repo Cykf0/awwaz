@@ -1,8 +1,10 @@
-/* Awaaz Map Service Worker (Offline PWA Engine) - v3.0 */
-const CACHE_NAME = 'awaaz-map-v3.0';
+/* Awaaz Map Service Worker (Offline PWA Engine) - v4.0 */
+const CACHE_NAME = 'awaaz-map-v4.0';
 const STATIC_ASSETS = [
   './',
   './index.html',
+  './css/style.css',
+  './js/app.js',
   './download.html',
   './manifest.webmanifest',
   './icon.svg',
@@ -16,7 +18,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Awaaz SW] Pre-caching static assets for v3.0');
+      console.log('[Awaaz SW] Pre-caching static assets for v4.0');
       return cache.addAll(STATIC_ASSETS).catch(err => {
         console.warn('[Awaaz SW] Some assets could not be pre-cached:', err);
       });

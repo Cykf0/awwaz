@@ -147,7 +147,7 @@
   <div style="background:#fff;border:1px solid #bfd7f3;border-radius:12px;padding:10px 12px;margin-bottom:12px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <b style="font-size:12px;color:var(--navy)">🚨 Alert Delivery Channel:</b>
-      <span class="badge" id="activeChannelBadge" style="background:#eaf8ef;color:#1e6a3d;font-weight:800">🟢 WhatsApp (Instant Live GPS)</span>
+      <span class="badge" id="activeChannelBadge" style="background:#eaf8ef;color:#1e6a3d;font-weight:800">🟢 WhatsApp (Default · Auto-SMS on Offline)</span>
     </div>
     <div style="display:flex;gap:4px">
       <button class="dispatch-mode-chip active" id="chipModeWa" onclick="setDispatchChannel('wa')">🟢 WhatsApp</button>
@@ -155,7 +155,7 @@
       <button class="dispatch-mode-chip" id="chipModeCloud" onclick="setDispatchChannel('cloud')">🚀 Cloud Bot</button>
     </div>
     <div id="dispatchChannelDesc" style="font-size:11px;color:#204374;margin-top:6px;line-height:1.4">
-      🟢 <b>WhatsApp (Active / Default):</b> Countdown ke baad pre-filled live Google Maps location link & turn-by-turn navigation ke sath WhatsApp chat auto-open karega.
+      🟢 <b>WhatsApp (Default):</b> Live Google Maps location link ke sath WhatsApp chat auto-open karega. <b>Agar offline ho (Zero Internet), toh automatically Direct Cellular SMS par switch ho jayega!</b>
     </div>
 
     <!-- ZERO-TOUCH & DIRECT LAUNCH EXPLAINER CALLOUT -->

@@ -1195,8 +1195,15 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const targetWa = firstPhone ? ('https://wa.me/' + firstPhone + '?text=' + encodeURIComponent(sosMsg)) : universalWa;
   const smsUri = buildSmsUri(cs.map(c=>c.n), smsSosMsg);
 
-  if (activeDispatchChannel === 'sms') {
-    showCloudBotToast('📱 CELLULAR SMS: Opening SMS composer with live GPS coordinates...');
+  const isOffline = !navigator.onLine || !!window.simulatedOfflineMode;
+  const isSmsMode = (activeDispatchChannel === 'sms') || isOffline;
+
+  if (isSmsMode) {
+    if (isOffline) {
+      showCloudBotToast('📶 OFFLINE DETECTED: Zero Internet! Auto-routed from WhatsApp to Direct Cellular SMS with live GPS coordinates!');
+    } else {
+      showCloudBotToast('📱 CELLULAR SMS: Opening SMS composer with live GPS coordinates...');
+    }
     setTimeout(() => { triggerNativeSms(smsUri); }, 150);
   } else if (activeDispatchChannel === 'cloud') {
     showCloudBotToast('☁️ CLOUD BOT: Manual SOS broadcasted!');
@@ -1213,17 +1220,25 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const box=$('alertBox');
   box.style.display='block';
   
+  const alertBadge = isOffline 
+    ? '<span class="badge" style="background:#ea580c;color:#fff;font-weight:800;font-size:11px">📶 OFFLINE · CELLULAR SMS ACTIVE</span>'
+    : '<span class="badge" style="background:#22c55e;color:#fff;font-weight:800;font-size:11px">🟢 ONLINE · WHATSAPP ACTIVE</span>';
+
+  const alertStatusSub = isOffline
+    ? '<b>Offline Mode Detected:</b> Internet nahi hai! Live doorstep GPS coordinates acquired and auto-routed to <b>Direct Cellular SIM SMS</b> (100% Zero Internet Required).'
+    : 'Live doorstep GPS coordinates acquired. Dispatched via <b>WhatsApp (Default)</b> with live Google Maps location & navigation.';
+
   const alertContent = `
-    <div style="background:#eaf8ef;border:2.5px solid #22c55e;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px rgba(34,197,94,0.22)">
+    <div style="background:#eaf8ef;border:2.5px solid ${isOffline?'#ea580c':'#22c55e'};border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px ${isOffline?'rgba(234,88,12,0.22)':'rgba(34,197,94,0.22)'}">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:pulse 1s infinite"></div>
-          <b style="font-size:15px;color:#1e6a3d">🚨 MANUAL SOS DISPATCH ACTIVE</b>
+          <div style="width:12px;height:12px;border-radius:50%;background:${isOffline?'#ea580c':'#22c55e'};box-shadow:0 0 10px ${isOffline?'#ea580c':'#22c55e'};animation:pulse 1s infinite"></div>
+          <b style="font-size:15px;color:${isOffline?'#9a3412':'#1e6a3d'}">🚨 ${isOffline ? 'OFFLINE SOS DISPATCH ACTIVE' : 'MANUAL SOS DISPATCH ACTIVE'}</b>
         </div>
-        <span class="badge" style="background:#22c55e;color:#fff;font-weight:800;font-size:11px">LIVE GPS ACTIVE</span>
+        ${alertBadge}
       </div>
       <p style="font-size:12.5px;color:#1e3d6f;margin:6px 0 10px;line-height:1.5">
-        Emergency SOS alert with live Google Maps location acquired. <b>Tap below to send directly:</b>
+        ${alertStatusSub}
       </p>
       <div style="background:#fff;border:1px solid #bbf7d0;border-radius:12px;padding:11px 13px;font-size:12px;color:#166534">
         <b>📍 Live Doorstep GPS:</b> <a href="${mapsLink}" target="_blank" style="color:#0072c6;font-weight:700">${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)</a><br>
@@ -1587,32 +1602,50 @@ function updateOnlineStatus(){
   const offBar = $('offlineStatusBar');
   if(!offBar) return;
 
+  const desc = $('dispatchChannelDesc');
+  const badge = $('activeChannelBadge');
+
   if(!isOnline){
     offBar.className = 'offline-banner active';
     offBar.innerHTML = `
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
         <div>
           <b>📶 100% OFFLINE MODE ACTIVE:</b> Zero Internet / Airplane Mode detected.<br>
-          <span style="font-size:11px">✓ On-Device Audio AI in RAM &bull; ✓ Hardware Satellite GPS active &bull; ✓ Cellular GSM SMS & 112 Auto-Fallback</span>
+          <span style="font-size:11px">✓ On-Device Audio AI in RAM &bull; ✓ Hardware Satellite GPS active &bull; ✓ <b>Automatic Failover to Direct Cellular SMS (SIM)</b></span>
         </div>
         <button class="b s g" style="padding:4px 9px;font-size:11px" onclick="toggleSimulatedOffline()">Turn Offline Test OFF</button>
       </div>
     `;
-    if(activeDispatchChannel === 'wa'){
-      setDispatchChannel('sms');
-      showCloudBotToast('📶 Zero Internet: Auto-routed emergency alert to Rasta 1 (Cellular GSM SMS) for offline delivery!');
+    if(badge && activeDispatchChannel === 'wa'){
+      badge.textContent = '📶 Offline Failover: Cellular SMS';
+      badge.className = 'badge warning';
+      badge.style.background = '#ea580c';
+      badge.style.color = '#fff';
     }
+    if(desc && activeDispatchChannel === 'wa'){
+      desc.innerHTML = '📶 <b>Offline Failover Active:</b> Internet nahi hai! Alerts will automatically send via <b>Direct Cellular SMS</b> with live GPS coordinates.';
+    }
+    showCloudBotToast('📶 Zero Internet: Emergency alerts auto-routed to Direct Cellular SMS for offline delivery!');
   } else {
     offBar.className = 'offline-banner online';
     offBar.innerHTML = `
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
         <div>
           <span style="font-weight:800;color:#1e6a3d">🌐 ONLINE & 100% OFFLINE READY:</span>
-          <span style="font-size:11px;color:#2c3e50">Audio AI runs in device RAM · Satellite GPS active · Zero internet required</span>
+          <span style="font-size:11px;color:#2c3e50">Default: WhatsApp (auto-fails over to Direct Cellular SMS if offline)</span>
         </div>
         <button class="b s o" style="padding:3px 8px;font-size:10.5px" onclick="toggleSimulatedOffline()">🧪 Test Offline Mode</button>
       </div>
     `;
+    if(badge && activeDispatchChannel === 'wa'){
+      badge.textContent = '🟢 WhatsApp (Default · Auto-SMS on Offline)';
+      badge.className = 'badge';
+      badge.style.background = '#eaf8ef';
+      badge.style.color = '#1e6a3d';
+    }
+    if(desc && activeDispatchChannel === 'wa'){
+      desc.innerHTML = '🟢 <b>WhatsApp (Default):</b> Live Google Maps location ke sath WhatsApp chat auto-open karega. <b>Agar offline ho (Zero Internet), toh automatically Direct Cellular SMS par switch ho jayega!</b>';
+    }
   }
 }
 window.updateOnlineStatus = updateOnlineStatus;
@@ -1648,8 +1681,10 @@ const updOvLoc=()=>{
 
 function ovSubTxt(n){
   const nc=contacts().length;
-  return nc?'⚠️ DANGER DETECTED: Automatic WhatsApp alert to '+nc+' contacts in '+Math.max(n,0)+'s (Cancel if safe)':
-            '⚠️ DANGER DETECTED: Automatic WhatsApp & City Map alert in '+Math.max(n,0)+'s (Cancel if safe)';
+  const isOffline = !navigator.onLine || !!window.simulatedOfflineMode;
+  const method = isOffline ? 'Cellular SMS (Offline Fallback)' : 'WhatsApp';
+  return nc?`⚠️ DANGER DETECTED: Automatic ${method} alert to ${nc} contacts in ${Math.max(n,0)}s (Cancel if safe)`:
+            `⚠️ DANGER DETECTED: Automatic ${method} & City Map alert in ${Math.max(n,0)}s (Cancel if safe)`;
 }
 
 function startCancelWindow(){
@@ -1659,7 +1694,9 @@ function startCancelWindow(){
   tlog('trig');
   $('cd').textContent=n;
   $('ovTitle').textContent=isSim?'⚡ DEMO: 5-SECOND DISTRESS COUNTDOWN':'EMERGENCY DISTRESS DETECTED (Scream Event)';
-  $('ovSub').textContent=isSim?'⚡ Simulation Active: Auto-sending background alert in '+n+'s (0 taps required)':'⚠️ DANGER DETECTED: Auto-sending alert in '+n+'s';
+  const isOff = !navigator.onLine || !!window.simulatedOfflineMode;
+  const mLabel = isOff ? 'Cellular SMS (Offline Fallback)' : 'WhatsApp';
+  $('ovSub').textContent=isSim?`⚡ Simulation Active: Auto-sending via ${mLabel} in ${n}s`:`⚠️ DANGER DETECTED: Auto-sending via ${mLabel} in ${n}s`;
   updOvLoc();
   $('ov').style.display='flex';
   beep();
@@ -1668,7 +1705,9 @@ function startCancelWindow(){
   cdTimer=setInterval(()=>{
     n--;
     $('cd').textContent=Math.max(n,0);
-    $('ovSub').textContent=isSim?'⚡ Simulation Active: Auto-sending background alert in '+Math.max(n,0)+'s (0 taps required)':'⚠️ DANGER DETECTED: Auto-sending alert in '+Math.max(n,0)+'s';
+    const loopOff = !navigator.onLine || !!window.simulatedOfflineMode;
+    const loopLabel = loopOff ? 'Cellular SMS (Offline Fallback)' : 'WhatsApp';
+    $('ovSub').textContent=isSim?`⚡ Simulation Active: Auto-sending via ${loopLabel} in ${Math.max(n,0)}s`:`⚠️ DANGER DETECTED: Auto-sending via ${loopLabel} in ${Math.max(n,0)}s`;
     updOvLoc();
     beep();
     if(n<=0){
@@ -1786,8 +1825,6 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const universalWa='https://api.whatsapp.com/send?text='+encodeURIComponent(waMsg);
   let targetWa=firstPhone?('https://wa.me/'+firstPhone+'?text='+encodeURIComponent(waMsg)):universalWa;
 
-  const isSmsMode = (activeDispatchChannel === 'sms') || !navigator.onLine || window.simulatedOfflineMode;
-
   // 1. Play loud emergency siren immediately for nearby help and to scare attacker
   if($('siren').checked) siren(8000);
 
@@ -1821,9 +1858,16 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
   const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
   const smsUri = buildSmsUri(targetNums, smsMsg);
 
+  const isOffline = !navigator.onLine || !!window.simulatedOfflineMode;
+  const isSmsMode = (activeDispatchChannel === 'sms') || isOffline;
+
   if (isSmsMode) {
     // 📱 Direct Cellular SMS Mode
-    showCloudBotToast('📱 CELLULAR SMS: Opening SMS composer with live GPS coordinates...');
+    if (isOffline) {
+      showCloudBotToast('📶 OFFLINE DETECTED (Zero Internet): Auto-routed from WhatsApp to Direct Cellular SMS with live GPS coordinates!');
+    } else {
+      showCloudBotToast('📱 CELLULAR SMS: Opening SMS composer with live GPS coordinates...');
+    }
     setTimeout(() => { triggerNativeSms(smsUri); }, 150);
   } else if (activeDispatchChannel === 'cloud') {
     // ☁️ Cloud Bot Mode
@@ -1847,17 +1891,25 @@ Coordinates: ${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)`;
     }
   } catch(e) {}
 
+  const alertBadge = isOffline 
+    ? '<span class="badge" style="background:#ea580c;color:#fff;font-weight:800;font-size:11px">📶 OFFLINE · CELLULAR SMS DISPATCHED</span>'
+    : '<span class="badge" style="background:#22c55e;color:#fff;font-weight:800;font-size:11px">🟢 ONLINE · WHATSAPP DISPATCHED</span>';
+
+  const alertDesc = isOffline
+    ? '<b>Offline Mode Detected:</b> Internet connection unavailable. Live doorstep GPS coordinates auto-routed to <b>Direct Cellular SIM SMS</b> (100% Zero Internet Required)!'
+    : 'Live doorstep GPS coordinates have been acquired. Dispatched via <b>WhatsApp (Default)</b> with live Google Maps route link!';
+
   const alertChannelHtml = `
-    <div style="background:#eaf8ef;border:2.5px solid #22c55e;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px rgba(34,197,94,0.22)">
+    <div style="background:#eaf8ef;border:2.5px solid ${isOffline?'#ea580c':'#22c55e'};border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 25px ${isOffline?'rgba(234,88,12,0.22)':'rgba(34,197,94,0.22)'}">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:pulse 1s infinite"></div>
-          <b style="font-size:15.5px;color:#1e6a3d">🚨 EMERGENCY LOCATION READY TO DISPATCH</b>
+          <div style="width:12px;height:12px;border-radius:50%;background:${isOffline?'#ea580c':'#22c55e'};box-shadow:0 0 10px ${isOffline?'#ea580c':'#22c55e'};animation:pulse 1s infinite"></div>
+          <b style="font-size:15.5px;color:${isOffline?'#9a3412':'#1e6a3d'}">🚨 ${isOffline ? 'OFFLINE DISPATCH: CELLULAR SMS' : 'EMERGENCY LOCATION DISPATCHED'}</b>
         </div>
-        <span class="badge" style="background:#22c55e;color:#fff;font-weight:800;font-size:11px">LIVE GPS ACTIVE</span>
+        ${alertBadge}
       </div>
       <p style="font-size:13px;color:#1e3d6f;margin:6px 0 10px;line-height:1.5">
-        Live doorstep GPS coordinates have been acquired. <b>Tap below to send immediately to Mom, Dad & Family:</b>
+        ${alertDesc} <b>Tap below to review or send directly:</b>
       </p>
       <div style="background:#fff;border:1px solid #bbf7d0;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#166534">
         <b>📍 Live Doorstep GPS:</b> <a href="${mapsLink}" target="_blank" style="color:#0072c6;font-weight:700">${l.lat.toFixed(6)}, ${l.lng.toFixed(6)} (±${l.acc}m)</a><br>
@@ -2058,18 +2110,46 @@ window.setDispatchChannel = function(ch){
     if(badge) { badge.textContent = '☁️ Cloud Bot Gateway'; badge.className = 'badge'; badge.style.background='#e3f6ea'; badge.style.color='#1e6a3d'; }
     if(desc) desc.innerHTML = '☁️ <b>Cloud Bot Gateway:</b> Dispatches alert payload to configured webhook server and displays instant WhatsApp/SMS action buttons.';
   } else {
-    if(badge) { badge.textContent = '🟢 WhatsApp (Instant Live GPS)'; badge.className = 'badge'; badge.style.background='#eaf8ef'; badge.style.color='#1e6a3d'; }
-    if(desc) desc.innerHTML = '🟢 <b>WhatsApp Mode:</b> Countdown ke baad pre-filled live Google Maps location link & turn-by-turn directions ke sath WhatsApp chat auto-open karega.';
+    // Default: WhatsApp
+    if(badge) {
+      if(isOffline){
+        badge.textContent = '📶 Offline Failover: Cellular SMS';
+        badge.className = 'badge warning';
+        badge.style.background = '#ea580c';
+        badge.style.color = '#fff';
+      } else {
+        badge.textContent = '🟢 WhatsApp (Default · Auto-SMS on Offline)';
+        badge.className = 'badge';
+        badge.style.background = '#eaf8ef';
+        badge.style.color = '#1e6a3d';
+      }
+    }
+    if(desc) {
+      if(isOffline){
+        desc.innerHTML = '📶 <b>Offline Failover Active:</b> Internet nahi hai! Alerts will automatically send via <b>Direct Cellular SMS</b> with live GPS coordinates.';
+      } else {
+        desc.innerHTML = '🟢 <b>WhatsApp (Default):</b> Online rehte waqt live Google Maps location link ke sath WhatsApp chat auto-open karega. <b>Agar offline ho (Zero Internet), toh automatically Direct Cellular SMS par switch ho jayega!</b>';
+      }
+    }
   }
 };
 
 window.testWhatsAppLaunch = function(){
+  const isOffline = !navigator.onLine || !!window.simulatedOfflineMode;
   const cs = contacts();
   const firstPhone = cs.length ? cs[0].n : (store.get('awaaz_emg_wa', '') || '');
   const timeStr = new Date().toLocaleTimeString();
-  const testMsg = `🚨 *AWAAZ MAP - TEST WHATSAPP ALERT* 🚨\n📍 Live Test GPS: https://maps.google.com/?q=28.632000,77.219000\n🧭 Navigation: https://www.google.com/maps/dir/?api=1&destination=28.632000,77.219000\n🕒 Time: ${timeStr}\n✅ Verification: WhatsApp dispatch test successful.`;
-  showCloudBotToast('🟢 TESTING WHATSAPP: Launching WhatsApp with sample emergency distress message...');
-  launchWhatsApp(firstPhone, testMsg);
+  const testMsg = `🚨 *AWAAZ MAP - TEST ALERT* 🚨\n📍 Live Test GPS: https://maps.google.com/?q=28.632000,77.219000\n🧭 Navigation: https://www.google.com/maps/dir/?api=1&destination=28.632000,77.219000\n🕒 Time: ${timeStr}\n✅ Verification: Test successful.`;
+  
+  if (isOffline) {
+    showCloudBotToast('📶 OFFLINE DETECTED: Device is offline. Auto-routing from WhatsApp to Direct Cellular SMS composer...');
+    const targetNums = cs.length ? cs.map(c=>c.n) : ['112'];
+    const smsUri = buildSmsUri(targetNums, testMsg);
+    setTimeout(() => { triggerNativeSms(smsUri); }, 150);
+  } else {
+    showCloudBotToast('🟢 TESTING WHATSAPP: Launching WhatsApp with sample emergency distress message...');
+    launchWhatsApp(firstPhone, testMsg);
+  }
 };
 
 window.testRasta1NativeSms = function(){
